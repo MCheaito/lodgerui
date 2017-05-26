@@ -5,43 +5,43 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label for="Name">Title</label>
-                <input type="text" class="form-control" name="bookingTitle"  [(ngModel)] ="booking.title"/>
+                <input type="text" class="form-control" name="bookingTitle"  [(ngModel)] ="booking.title" placeholder="Enter booking title"/>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label for="Arrival">Check-in</label>
-                <input type="date" class="form-control" Name="Arrival"[(ngModel)] ="booking.arrival"/>
+                <input type="date" class="form-control" name="Arrival"[(ngModel)] ="booking.arrival"/>
             </div>
         </div>
                 <div class="col-md-6">
             <div class="form-group">
                 <label for="Departure">Check-in</label>
-                <input type="date" class="form-control" Name="Arrival" [(ngModel)] ="booking.departure"/>
+                <input type="date" class="form-control" name="Arrival" [(ngModel)] ="booking.departure"/>
             </div>
         </div>
        <div class="col-md-4">
             <div class="form-group">
                 <label for="RoomCount">Room</label>
-                <input type="number" min="0" max="10" class="form-control" Name="RoomCount" [(ngModel)] ="booking.roomCount"/>
+                <input type="number" min="0" max="10" class="form-control" name="RoomCount" [(ngModel)] ="booking.roomCount"/>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="AdultCount">Adult</label>
-                <input type="number" min="0" max="10" class="form-control" Name="AdultCount" [(ngModel)] ="booking.adultCount"/>
+                <input type="number" min="0" max="10" class="form-control" name="AdultCount" [(ngModel)] ="booking.adultCount"/>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="ChildrenCount">Children</label>
-                <input type="number" min="0" max="10" class="form-control" Name="ChildrenCount" [(ngModel)] ="booking.childCount"/>
+                <input type="number" min="0" max="10" class="form-control" name="ChildrenCount" [(ngModel)] ="booking.childCount"/>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="Type">Type</label>
-                <select class="form-control" Name="Type" [(ngModel)] ="booking.type">
+                <select class="form-control" name="Type" [(ngModel)] ="booking.type">
                     <option value="B">Business</option>
                     <option value="I">Individual</option>
                     <option value=""></option>
@@ -51,7 +51,7 @@
         <div class="col-md-8">
             <div class="form-group">
                 <label for="PromotionCode">Promotion / rate/ Plan</label>
-                <select class="form-control" Name="PromotionCode" [(ngModel)] ="booking.promotionCode">
+                <select class="form-control" name="PromotionCode" [(ngModel)] ="booking.promotionCode">
                     <option value="C1">Promption #1</option>
                     <option value="C2">Promption #2</option>
                     <option value="C3">Promption #3</option>
@@ -64,19 +64,19 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="PhoneNumber">Phone</label>
-                <input type="text" class="form-control" Name="PhoneNumber" [(ngModel)] ="booking.phoneNumber" />
+                <input type="text" class="form-control" name="PhoneNumber" [(ngModel)] ="booking.phoneNumber" />
             </div>
         </div>
         <div class="col-md-8">
             <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" class="form-control" Name="Email" [(ngModel)] ="booking.email"/>
+                <input type="email" class="form-control" name="Email" [(ngModel)] ="booking.email"/>
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 <label for="Remarks">Remarks</label>
-                <textarea rows="4" class="form-control" Name="Remarks" [(ngModel)] ="booking.remarks"></textarea>
+                <textarea rows="4" class="form-control" name="Remarks" [(ngModel)] ="booking.remarks"></textarea>
             </div>
         </div>
           <div class="col-md-12">

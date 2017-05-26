@@ -15,9 +15,9 @@ booking: Booking;
 
   constructor() { 
     this.booking = new Booking();
-    this.booking.title='sddddddddddddd';
+    this.booking.title="";
     this.booking.bookingGuid = Guid.newGuid();
-    this.booking.type="P";
+    this.booking.type="B";
     this.booking.title ="";
     this.booking.roomCount=1,
     this.booking.adultCount=1 ,
@@ -29,17 +29,15 @@ booking: Booking;
     this.booking.email="";
     this.booking.phoneNumber="";
     this.booking.typeOfLocation="" ;
-
-
-    
-  }
+     }
 
   ngOnInit() {
   }
 
   submitForm(myForm:NgForm) {
- alert(JSON.stringify(myForm.value));
+ //alert(JSON.stringify(myForm.value));
  alert(JSON.stringify(this.booking));
+ this.booking.remarks="Donnn!!";
  }
 
 }
