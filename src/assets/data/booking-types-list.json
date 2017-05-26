@@ -1,0 +1,7 @@
+{
+"data": [
+    {"code": "I", "name": "Individual"},
+    {"code": "B", "name": "Business"},
+    {"code": "", "name": "N/A"}
+]
+}

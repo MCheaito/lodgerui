@@ -1,0 +1,10 @@
+{
+"data": [
+    {"code": "00000000-0000-0000-0000-000000000000", "name": "No-Promotions"},
+    {"code": "28E0579C-7236-E711-B75E-000C29B6CDDC", "name": "40% off Membership"},
+    {"code": "2EE0579C-7236-E711-B75E-000C29B6CDDC", "name": "Save on services"},
+    {"code": "26E0579C-7236-E711-B75E-000C29B6CDDC", "name": "20%  Gouvernment discount"},
+    {"code": "26E0079C-7236-E711-B75E-000C29B6CDDC", "name": "20%  Gouvernment discount"},
+    {"code": "576F10BE-4386-4C76-8B2B-0D2F4291FDE3", "name": "20% Off Annual Membership"}
+]
+}

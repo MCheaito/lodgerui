@@ -1,7 +1,6 @@
 <div class="row">
     <h1 class="text-primary">Guest services</h1>
     <form #myForm="ngForm" (ngSubmit) = "submitForm(myForm)">
-        <div asp-validation-summary="ModelOnly" class="alert alert-info"></div>
         <div class="col-md-12">
             <div class="form-group">
                 <label for="Name">Title</label>
@@ -29,7 +28,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="AdultCount">Adult</label>
-                <input type="number" min="0" max="10" class="form-control" name="AdultCount" [(ngModel)] ="booking.adultCount"/>
+                <input type="number" min="0" max="10" class="form-control" name="AdultCount" [(ngModel)] ="booking.adultCount"  value="{{booking.adultCount}}"/>
             </div>
         </div>
         <div class="col-md-4">
@@ -42,9 +41,7 @@
             <div class="form-group">
                 <label for="Type">Type</label>
                 <select class="form-control" name="Type" [(ngModel)] ="booking.type">
-                    <option value="B">Business</option>
-                    <option value="I">Individual</option>
-                    <option value=""></option>
+                    <option *ngFor="let type of bookingTypesList" value="{{type.code}}">{{type.name}}</option>
                 </select>
             </div>
         </div>
@@ -52,12 +49,7 @@
             <div class="form-group">
                 <label for="PromotionCode">Promotion / rate/ Plan</label>
                 <select class="form-control" name="PromotionCode" [(ngModel)] ="booking.promotionCode">
-                    <option value="C1">Promption #1</option>
-                    <option value="C2">Promption #2</option>
-                    <option value="C3">Promption #3</option>
-                    <option value="C4">Promption #4</option>
-                    <option value="C5">Promption #5</option>
-                    <option value="C6">Promption #6</option>
+                     <option *ngFor="let promo of promotionList" value= {{promo.code}}>{{promo.name}}</option>
                 </select>
             </div>
         </div>
