@@ -11,53 +11,47 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="Arrival">Check-in</label>
-                <input type="date" class="form-control" asp-for="Arrival" />
-                <span asp-validation-for="Arrival"></span>
+                <input type="date" class="form-control" Name="Arrival"[(ngModel)] ="booking.arrival"/>
             </div>
         </div>
-        <div class="col-md-6">
+                <div class="col-md-6">
             <div class="form-group">
-                <label for="Departure">Check-out</label>
-                <input type="date" class="form-control" asp-for="Departure" />
-                <span asp-validation-for="Departure"></span>
+                <label for="Departure">Check-in</label>
+                <input type="date" class="form-control" Name="Arrival" [(ngModel)] ="booking.departure"/>
             </div>
         </div>
-        <div class="col-md-4">
+       <div class="col-md-4">
             <div class="form-group">
                 <label for="RoomCount">Room</label>
-                <input type="number" min="0" max="10" class="form-control" asp-for="RoomCount" />
-                <span asp-validation-for="RoomCount"></span>
+                <input type="number" min="0" max="10" class="form-control" Name="RoomCount" [(ngModel)] ="booking.roomCount"/>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="AdultCount">Adult</label>
-                <input type="number" min="0" max="10" class="form-control" asp-for="AdultCount" />
-                <span asp-validation-for="AdultCount"></span>
+                <input type="number" min="0" max="10" class="form-control" Name="AdultCount" [(ngModel)] ="booking.adultCount"/>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="ChildrenCount">Children</label>
-                <input type="number" min="0" max="10" class="form-control" asp-for="ChildrenCount" />
-                <span asp-validation-for="ChildrenCount"></span>
+                <input type="number" min="0" max="10" class="form-control" Name="ChildrenCount" [(ngModel)] ="booking.childCount"/>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="Type">Type</label>
-                <select class="form-control" asp-for="Type">
+                <select class="form-control" Name="Type" [(ngModel)] ="booking.type">
                     <option value="B">Business</option>
                     <option value="I">Individual</option>
                     <option value=""></option>
                 </select>
-                <span asp-validation-for="Type"></span>
             </div>
         </div>
         <div class="col-md-8">
             <div class="form-group">
                 <label for="PromotionCode">Promotion / rate/ Plan</label>
-                <select class="form-control" asp-for="PromotionCode">
+                <select class="form-control" Name="PromotionCode" [(ngModel)] ="booking.promotionCode">
                     <option value="C1">Promption #1</option>
                     <option value="C2">Promption #2</option>
                     <option value="C3">Promption #3</option>
@@ -65,28 +59,24 @@
                     <option value="C5">Promption #5</option>
                     <option value="C6">Promption #6</option>
                 </select>
-                <span asp-validation-for="PromotionCode"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label for="PhoneNumber">Phone</label>
-                <input type="text" class="form-control" asp-for="PhoneNumber" />
-                <span asp-validation-for="PhoneNumber"></span>
+                <input type="text" class="form-control" Name="PhoneNumber" [(ngModel)] ="booking.phoneNumber" />
             </div>
         </div>
         <div class="col-md-8">
             <div class="form-group">
                 <label for="Email">Email</label>
-                <input type="email" class="form-control" asp-for="Email" />
-                <span asp-validation-for="Email"></span>
+                <input type="email" class="form-control" Name="Email" [(ngModel)] ="booking.email"/>
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
                 <label for="Remarks">Remarks</label>
-                <textarea rows="4" class="form-control" asp-for="Remarks"></textarea>
-                <span asp-validation-for="Remarks"></span>
+                <textarea rows="4" class="form-control" Name="Remarks" [(ngModel)] ="booking.remarks"></textarea>
             </div>
         </div>
           <div class="col-md-12">
