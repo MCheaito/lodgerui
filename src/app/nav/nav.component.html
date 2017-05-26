@@ -2,24 +2,21 @@
     <a class="navbar-brand" href="#">LodgIX</a>
     <ul class="nav navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="active">
             <a class="nav-link" href="#">About</a>
         </li>
-        <li class="active">
-            <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="active">
-            <a class="nav-link" href="#">Contact</a>
+          <li class="active">
+            <a class="nav-link" routerLink="/contact">Contact</a>
         </li>
         <li class="dropdown">
             <a tabindex="0" data-toggle="dropdown" data-submenu>
-                Dropdown<span class="caret"></span>
+                Booking<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li class="dropdown-submenu">
-                    <a tabindex="0">Action</a>
+                    <a tabindex="0" class="nav-link" routerLink="booking" >New...</a>
                 </li>
             </ul>
         </li>

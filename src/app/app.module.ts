@@ -8,10 +8,13 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
+import { BookingComponent } from './booking/booking.component';
 
 
 export const ROUTES: Routes = [
-    { path: '', component: AppComponent }
+    { path: '', component: AppComponent },
+    { path: 'contact', component: ContactComponent },
+    { path: 'booking', component: BookingComponent }
 ];
 
 @NgModule({
@@ -19,7 +22,8 @@ export const ROUTES: Routes = [
         AppComponent,
         NavComponent,
         FooterComponent,
-        ContactComponent
+        ContactComponent,
+        BookingComponent
     ],
     imports: [
         BrowserModule,
