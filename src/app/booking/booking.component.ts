@@ -51,7 +51,7 @@ private messages:string[];
  //alert(JSON.stringify(this.booking));
 //alert(JSON.stringify(this.promotionList));
 
- this.booking.remarks="Donnn!!";
+ this.booking.remarks=JSON.stringify(this.booking);
  }
 
 }

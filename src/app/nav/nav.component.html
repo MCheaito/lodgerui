@@ -4,24 +4,31 @@
         <li class="nav-item active">
             <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="active">
-            <a class="nav-link" href="#">About</a>
-        </li>
-          <li class="active">
-            <a class="nav-link" routerLink="/contact">Contact</a>
-        </li>
         <li class="dropdown">
-            <a tabindex="0" data-toggle="dropdown" data-submenu>
-                Booking<span class="caret"></span>
+            <a tabindex="0" data-toggle="dropdown" data-submenu>Booking<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
                 <li class="dropdown-submenu">
-                    <a tabindex="0" class="nav-link" routerLink="booking" >New...</a>
+                    <a tabindex="0" class="nav-link" routerLink="booking/new" >New...</a>
+                </li>
+                    <li class="dropdown-submenu">
+                    <a tabindex="0" class="nav-link" routerLink="booking/search" >Serch...</a>
                 </li>
             </ul>
         </li>
     </ul>
     <ul class="nav navbar-nav pull-right">
+        <li class="dropdown">
+            <a tabindex="0" data-toggle="dropdown" data-submenu>
+                <i class="fa fa-cog"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="nav-link" routerLink="/">Companies</a></li>
+                <li><a class="nav-link" routerLink="/">Logout</a></li>
+                <li><a class="nav-link" routerLink="/">About</a></li>         
+                <li><a class="nav-link" routerLink="/contact">Contact</a></li>                            
+            </ul>
+        </li>        
         <li class="nav-item">
             <a class="nav-link" href="https://twitter.com/@cheaitoMC"><i class="fa fa-twitter" aria-hidden="true"></i></a>
         </li>

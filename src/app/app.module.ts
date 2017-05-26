@@ -9,12 +9,13 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { BookingComponent } from './booking/booking.component';
+import { HomeComponent } from './home/home.component';
 
 
 export const ROUTES: Routes = [
-    { path: '', component: AppComponent },
+    { path: '', component: HomeComponent },
     { path: 'contact', component: ContactComponent },
-    { path: 'booking', component: BookingComponent }
+    { path: 'booking/new', component: BookingComponent }
 ];
 
 @NgModule({
@@ -23,7 +24,8 @@ export const ROUTES: Routes = [
         NavComponent,
         FooterComponent,
         ContactComponent,
-        BookingComponent
+        BookingComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,

@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label for="Type">Type</label>
                 <select class="form-control" name="Type" [(ngModel)] ="booking.type">
-                    <option *ngFor="let type of bookingTypesList" value="{{type.code}}">{{type.name}}</option>
+                    <option *ngFor="let type of bookingTypesList" [ngValue]="type.code">{{type.name}}</option>
                 </select>
             </div>
         </div>
