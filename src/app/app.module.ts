@@ -10,12 +10,16 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './authentication/login.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 
 export const ROUTES: Routes = [
+    { path: 'home', component: AuthenticationComponent},
     { path: '', component: HomeComponent },
     { path: 'contact', component: ContactComponent },
-    { path: 'booking/new', component: BookingComponent }
+    { path: 'booking/new', component: BookingComponent },
+    { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -25,7 +29,9 @@ export const ROUTES: Routes = [
         FooterComponent,
         ContactComponent,
         BookingComponent,
-        HomeComponent
+        HomeComponent,
+        LoginComponent,
+        AuthenticationComponent
     ],
     imports: [
         BrowserModule,
