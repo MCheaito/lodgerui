@@ -6,7 +6,7 @@ export class Booking {
     departure:Date;
     roomCount:number;
     adultCount :number ;
-    childrenCount :number;
+    childCount :number;
     promotionCode:string ;
     companyName:string ;
     remarks:string ;

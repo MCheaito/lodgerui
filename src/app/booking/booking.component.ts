@@ -15,9 +15,9 @@ import {BookingTypes} from '../utils/bookingTypes';
 
 export class BookingComponent implements OnInit {
 booking: Booking;
-private promotionList:Promotions[];
-private bookingTypesList: BookingTypes[];
-private messages:string[];
+promotionList:Promotions[];
+bookingTypesList: BookingTypes[];
+messages:string[];
 
   constructor(private _service:BookingService) { 
     this.booking = new Booking();
@@ -27,7 +27,7 @@ private messages:string[];
     this.booking.title ="";
     this.booking.roomCount=1,
     this.booking.adultCount=1 ,
-    this.booking.childrenCount=10;
+    this.booking.childCount=10;
     this.booking.promotionCode="";
     this.booking.companyName="";
     this.booking.remarks="";
