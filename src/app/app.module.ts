@@ -12,7 +12,7 @@ import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './authentication/login.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
-
+import { MaterialModule } from '@angular/material';
 
 export const ROUTES: Routes = [
     { path: 'home', component: AuthenticationComponent},
@@ -24,6 +24,7 @@ export const ROUTES: Routes = [
 
 @NgModule({
     declarations: [
+       
         AppComponent,
         NavComponent,
         FooterComponent,
@@ -34,6 +35,7 @@ export const ROUTES: Routes = [
         AuthenticationComponent
     ],
     imports: [
+         MaterialModule,
         BrowserModule,
         FormsModule,
         HttpModule,
