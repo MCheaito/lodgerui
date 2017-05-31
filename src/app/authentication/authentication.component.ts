@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from './authentication.service';
+import {LodgerUser} from './LodgerUser';
 
 @Component({
   selector: 'app-authentication',
@@ -10,7 +11,13 @@ import {AuthenticationService} from './authentication.service';
 
 export class AuthenticationComponent implements OnInit {
 
-  constructor(private _service:AuthenticationService) { }
+public user = new LodgerUser('','');
+public errorMsg = '';
+
+  constructor(private _service:AuthenticationService) 
+  {
+   
+   }
 
   ngOnInit() {
     this._service.checkCredentials();
@@ -20,5 +27,18 @@ export class AuthenticationComponent implements OnInit {
   {
     this._service.logout();
   }
+
+  login() {
+    
+      if(!this._service.login(this.user))
+      {
+          this.errorMsg = 'Failed to login';
+      }
+  }
+
+   isAuthenticated() : boolean
+   {
+      return this._service.isAuthenticated(); 
+   }
 
 }

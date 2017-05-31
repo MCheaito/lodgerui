@@ -10,16 +10,17 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { BookingComponent } from './booking/booking.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './authentication/login.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { MaterialModule } from '@angular/material';
 
 export const ROUTES: Routes = [
-    { path: 'home', component: AuthenticationComponent},
+    { path: 'home', component: HomeComponent},
     { path: '', component: HomeComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'booking/new', component: BookingComponent },
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: AuthenticationComponent },
+    { path: 'logout', component: AuthenticationComponent }
+
 ];
 
 @NgModule({
@@ -30,7 +31,6 @@ export const ROUTES: Routes = [
         ContactComponent,
         BookingComponent,
         HomeComponent,
-        LoginComponent,
         AuthenticationComponent
     ],
     imports: [

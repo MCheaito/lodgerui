@@ -9,7 +9,8 @@ var users = [
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private _router:Router) { }
+
+constructor(private _router:Router) { }
 
   logout()
   {
@@ -19,23 +20,29 @@ export class AuthenticationService {
 
    login(user:LodgerUser){
     var authenticatedUser = users.find(u => u.email === user.email);
+
     if (authenticatedUser && authenticatedUser.password === user.password){
+
       localStorage.setItem("user", JSON.stringify(authenticatedUser));
-      this._router.navigate(['home']);      
+      this._router.navigate(['home']); 
+
       return true;
     }
     return false;
    }
 
-   isAuthenticated(){
-    if (localStorage.getItem("user") === null){
-        this._router.navigate(['Login']);
-    }
+   isAuthenticated(): boolean{
+     //TODO: verifier si l'usager connecté  ou non
+     return localStorage.getItem("user")!= null;
   } 
 
   checkCredentials(){
     if (localStorage.getItem("user") === null){
         this._router.navigate(['Login']);
+    }
+    else 
+    {
+      this._router.navigate(['home']);
     }
   } 
 
