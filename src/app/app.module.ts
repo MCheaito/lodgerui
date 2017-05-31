@@ -24,7 +24,6 @@ export const ROUTES: Routes = [
 
 @NgModule({
     declarations: [
-       
         AppComponent,
         NavComponent,
         FooterComponent,

@@ -17,7 +17,7 @@ export class AuthenticationService {
     this._router.navigate(['Login']);
   }
 
-   login(user){
+   login(user:LodgerUser){
     var authenticatedUser = users.find(u => u.email === user.email);
     if (authenticatedUser && authenticatedUser.password === user.password){
       localStorage.setItem("user", JSON.stringify(authenticatedUser));
@@ -27,7 +27,7 @@ export class AuthenticationService {
     return false;
    }
 
-   checkCredentials(){
+   isAuthenticated(){
     if (localStorage.getItem("user") === null){
         this._router.navigate(['Login']);
     }
