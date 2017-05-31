@@ -12,4 +12,4 @@ body {
   text-align: center;
 }
 @import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
-@import '../node_modules/bootswatch/darkly/bootstrap.min.css';
+@import '../node_modules/bootswatch/yeti/bootstrap.min.css';
