@@ -29,7 +29,6 @@ public errorMsg = '';
   }
 
   login() {
-    
       if(!this._service.login(this.user))
       {
           this.errorMsg = 'Failed to login';

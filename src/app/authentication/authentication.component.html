@@ -1,5 +1,5 @@
 <div *ngIf="isAuthenticated() then TrustedBlock else unTrestedBlock"></div> 
-<template #TrustedBlock>
+<ng-template #TrustedBlock>
 <div class="container" >
     <div class="content">
         <span>Congratulations, you have successfully logged in!!</span>
@@ -7,9 +7,9 @@
         <a (click)="logout()" href="#">Click Here to logout</a>
     </div>
 </div>
-</template>
+</ng-template>
 <!------------------------ Login   ------------------------------>
-<template #unTrestedBlock>
+<ng-template #unTrestedBlock>
     <div class="container">
         <form class="form-horizontal" role="form" method="POST" action="/login">
             <div class="row">
@@ -82,4 +82,4 @@
             </div>
         </form>
     </div>
-</template>
+</ng-template>

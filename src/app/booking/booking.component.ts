@@ -1,40 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+
 import {Booking} from './booking.model';
 import {Guid} from '../utils/Guid';
-import {BookingService} from './Booking.service';
+import {BookingService} from './booking.service';
 import {Promotions} from '../utils/promotions';
 import {BookingTypes} from '../utils/bookingTypes';
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css'],
-  providers: [BookingService]
+  styleUrls: ['./booking.component.css']
 })
 
 export class BookingComponent implements OnInit {
-booking: Booking;
 promotionList:Promotions[];
 bookingTypesList: BookingTypes[];
 messages:string[];
+booking: Booking;
+  constructor(
+ 
+      private route: ActivatedRoute,
+      private router: Router,
+      private _service:BookingService) { 
+  this.route.params
+    //(+) converts string 'id' to a number
+    .switchMap((params: Params) => this._service.getBooking(params['id']))
+    .subscribe((booking: Booking) => this.booking = booking);
 
-  constructor(private _service:BookingService) { 
-    this.booking = new Booking();
-    this.booking.title="";
-    this.booking.bookingGuid = Guid.newGuid();
-    this.booking.type="B";
-    this.booking.title ="";
-    this.booking.roomCount=1,
-    this.booking.adultCount=1 ,
-    this.booking.childCount=10;
-    this.booking.promotionCode="";
-    this.booking.companyName="";
-    this.booking.remarks="";
-    this.booking.referenceNumber="";
-    this.booking.email="";
-    this.booking.phoneNumber="";
-    this.booking.typeOfLocation="" ;
      }
 
   ngOnInit() {
@@ -51,7 +46,7 @@ messages:string[];
  //alert(JSON.stringify(this.booking));
 //alert(JSON.stringify(this.promotionList));
 
- this.booking.remarks=JSON.stringify(this.booking);
+// this.booking.remarks=JSON.stringify(this.booking);
  }
 
 }

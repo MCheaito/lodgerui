@@ -15,7 +15,7 @@ constructor(private _router:Router) { }
   logout()
   {
     localStorage.removeItem("user");
-    this._router.navigate(['Login']);
+    //this._router.navigate(['Login']);
   }
 
    login(user:LodgerUser){

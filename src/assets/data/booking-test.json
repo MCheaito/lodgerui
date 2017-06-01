@@ -1,0 +1,20 @@
+{ 
+
+"data":
+   [ {
+        "bookingGuid": "28E0579C-7236-E711-B75E-000C29B6CDDC",
+        "type":"I",
+        "title":"Reservation test",
+        "arrival":"2017-01-01",
+        "departure":"2017-10-01",
+        "roomCount":2,
+        "adultCount" :2,
+        "childCount" :0,
+        "promotionCode":"2EE0579C-7236-E711-B75E-000C29B6CDDC",
+        "remarks":"Test ",
+        "referenceNumber":"000000000000",
+        "email" :"Cheaito@hotmail.com ",
+        "phoneNumber":"450-3526666",
+        "typeOfLocation":"0"
+    }]
+}
