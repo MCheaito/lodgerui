@@ -1,7 +1,7 @@
 export class Booking {
     bookingGuid:string;
     type:string;
-    title :string;
+    name:string;
     arrival:Date;
     departure:Date;
     roomCount:number;

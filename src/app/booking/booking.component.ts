@@ -25,6 +25,7 @@ booking: Booking;
       private route: ActivatedRoute,
       private router: Router,
       private _service:BookingService) { 
+        this.booking = new Booking();
   this.route.params
     //(+) converts string 'id' to a number
     .switchMap((params: Params) => this._service.getBooking(params['id']))
