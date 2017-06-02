@@ -36,7 +36,7 @@ getBooking(id:string):Promise<Booking>
                     .get(url)
                     .map(this.extractData)
                     .toPromise()
-                    .then(res => res as Booking)
+                    .then(this.extractBookingData)
                     .catch(this.handleError);
   //              .toPromise()
    //             .then(res =>  res.json().data as Booking[]);
@@ -48,9 +48,13 @@ private extractData(res: Response) {
   
   return data || { };
 }
+private extractBookingData(res: any) {
+  let data = res as Booking;
+  
+  return data || { };
+}
 private extractJsonData(res: Response) {
   let body = res.json();
-  console.log(body.data);
   return body.data || { };
 }
   private handleError(error: any): Promise<any> {
