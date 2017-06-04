@@ -3,11 +3,9 @@ import {NgForm} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
-import {Booking} from './booking.model';
 import {Guid} from '../utils/Guid';
-import {BookingService} from './booking.service';
-import {Promotions} from '../utils/promotions';
-import {BookingTypes} from '../utils/bookingTypes';
+import {BookingService} from '../_services/index';
+import {Promotions,BookingTypes,Booking} from '../_models/index';
 
 @Component({
   selector: 'app-booking',

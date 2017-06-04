@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
+
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
@@ -12,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from './authentication/auth.guard';
 
 @NgModule({
     declarations: [
@@ -30,7 +32,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         HttpModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: 
+        [        AuthGuard
+],
       entryComponents: [
     AppComponent
   ],

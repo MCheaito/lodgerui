@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 
 import {Promotions} from '../utils/promotions';
 import {BookingTypes} from '../utils/bookingTypes';
-import {Booking} from './booking.Model';
+import {Booking} from '../_models/booking.Model';
 
 
 import 'rxjs/add/operator/toPromise';

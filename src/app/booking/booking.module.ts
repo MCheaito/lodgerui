@@ -5,7 +5,7 @@ import { FormsModule }   from '@angular/forms';
 import {BookingRoutingModule} from './booking-routing.module';
 import {BookingComponent} from './booking.component';
 import {BookingListComponent} from './booking-list.component';
-import {BookingService} from './booking.service';
+import {BookingService} from '../_services/index';
 
 @NgModule({
   imports: [

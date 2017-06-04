@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from './authentication.service';
-import {LodgerUser} from './LodgerUser';
+import { Router } from '@angular/router';
+import {AuthenticationService} from '../_services/index';
+import {User} from '../_models/index';
 
 @Component({
   selector: 'app-authentication',
@@ -11,28 +12,30 @@ import {LodgerUser} from './LodgerUser';
 
 export class AuthenticationComponent implements OnInit {
 
-public user = new LodgerUser('','');
-public errorMsg = '';
+model: any = {};
+loading:boolean = false;
+errorMsg:string = '';
 
-  constructor(private _service:AuthenticationService) 
+  constructor( private router: Router,private _service:AuthenticationService) 
   {
-   
    }
-
   ngOnInit() {
-    this._service.checkCredentials();
-  }
-
-  logout()
-  {
     this._service.logout();
   }
 
   login() {
-      if(!this._service.login(this.user))
-      {
-          this.errorMsg = 'Failed to login';
-      }
+    
+      this.loading = true;
+      this._service.login(this.model.username, this.model.password)
+      .subscribe(result => {
+                if (result === true) {
+                    this.router.navigate(['/']);
+                } else {
+                    this.errorMsg = 'Username or password is incorrect';
+                    this.loading = false;
+                }
+            });
+    
   }
 
    isAuthenticated() : boolean
