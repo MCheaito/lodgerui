@@ -8,7 +8,8 @@ import { HomeComponent} from './home/home.component';
 
 
 export const ROUTES: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '', loadChildren: './home/home.module#HomeModule'},
+//    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: AuthenticationComponent },
     { path: 'logout', component: AuthenticationComponent }, 
     { path: 'booking', loadChildren: './booking/booking.module#BookingModule'},

@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -21,7 +20,6 @@ import { AuthGuard } from './authentication/auth.guard';
         NavComponent,
         FooterComponent,
         ContactComponent,
-        HomeComponent,
         AuthenticationComponent,
         PageNotFoundComponent
             ],
@@ -33,8 +31,7 @@ import { AuthGuard } from './authentication/auth.guard';
         AppRoutingModule
     ],
     providers: 
-        [        AuthGuard
-],
+        [AuthGuard],
       entryComponents: [
     AppComponent
   ],

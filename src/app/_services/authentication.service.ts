@@ -3,6 +3,8 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
+import {config} from '../config'
+
 
 @Injectable()
 export class AuthenticationService {
@@ -27,14 +29,23 @@ constructor(  private http :Http ) {
   }
   
   login(username: string, password: string): Observable<boolean> {
-      return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
+//      return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+
+    const urlSearchParams = new URLSearchParams();
+    urlSearchParams.append('username', username);
+    urlSearchParams.append('password', password);
+    const body = urlSearchParams.toString();
+
+//      return this.http.post(config.apiUrl+'authentication/login', JSON.stringify({ username: username, password: password }))
+      return this.http.post(config.url+'authentication/login', body, { headers: headers })
           .map((response: Response) => {
               // login successful if there's a jwt token in the response
-              let token = response.json() && response.json().token;
+              let token = response.json() ; //&& response.json().token;
               if (token) {
                   // set token property
                   this.token = token;
-
+                 
                   // store username and jwt token in local storage to keep user logged in between page refreshes
                   localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
 

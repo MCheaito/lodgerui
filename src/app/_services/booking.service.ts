@@ -1,29 +1,27 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
-
-import {Promotions} from '../utils/promotions';
-import {BookingTypes} from '../utils/bookingTypes';
-import {Booking} from '../_models/booking.Model';
-
+import {config} from '../config';
+import {Booking,BookingTypes,Promotions} from '../_models/index';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BookingService {
  private apiJsonUrl = 'assets/data/';  // URL to web api
+ private apiUrl = config.url+'api/booking';  // URL to web api
 
- private apiUrl = 'http://localhost:5000/api/booking';  // URL to web api
+  constructor(private http:Http) {  
 
-  constructor(private http:Http) {  }
+  }
 
   getListOfPromotions():Promise<Promotions[]> {
-    return this.http.get(this.apiJsonUrl+'promotions-list.json')
+    return this.http.get(config.apiJsonUrl+'promotions-list.json')
                 .toPromise() 
                 .then(res =>  res.json().data as Promotions[]);
 }
 
 getListOfBookingTypes():Promise<BookingTypes[]> {
-    return this.http.get(this.apiJsonUrl+'booking-types-list.json')
+    return this.http.get(config.apiJsonUrl+'booking-types-list.json')
                 .toPromise()
                 .then(res =>  res.json().data as BookingTypes[]);
 }
