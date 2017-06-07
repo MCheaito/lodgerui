@@ -23,6 +23,10 @@ errorMsg:string = '';
     this._service.logout();
   }
 
+cancel()
+{
+    this.loading=false;
+}
   login() {
     
       this.loading = true;
@@ -37,10 +41,10 @@ errorMsg:string = '';
             });
     
   }
-
+/*
    isAuthenticated() : boolean
    {
       return this._service.isAuthenticated(); 
-   }
+   }*/
 
 }
