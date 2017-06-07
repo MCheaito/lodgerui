@@ -14,6 +14,12 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './authentication/auth.guard';
 import { HttpService} from  './_services/http.service';
+
+export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
+  return  new HttpService(backend, defaultOptions);
+}
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -34,9 +40,7 @@ import { HttpService} from  './_services/http.service';
         AuthGuard,
         {
             provide: Http ,useClass:HttpService,
-            useFactory: (backend: XHRBackend, options: RequestOptions) => {
-                return new HttpService(backend, options);
-            },
+            useFactory: httpFactory,
             deps: [XHRBackend, RequestOptions]
         }
     ],

@@ -13,7 +13,7 @@ public token: string;
 constructor(  private http :Http ) {
 
   // set token if saved in local storage
-  var currentUser = JSON.parse(localStorage.getItem(config.authToken));
+  var currentUser = JSON.parse(localStorage.getItem(config.authTokenName));
 
   this.token = currentUser && currentUser.token;
 
@@ -25,7 +25,7 @@ constructor(  private http :Http ) {
     //this._router.navigate(['Login']);
   // clear token remove user from local storage to log user out
     this.token = null;
-    localStorage.removeItem(config.authToken);
+    localStorage.removeItem(config.authTokenName);
   }
   
   login(username: string, password: string): Observable<boolean> {
@@ -47,7 +47,8 @@ constructor(  private http :Http ) {
                   this.token = token;
                  
                   // store username and jwt token in local storage to keep user logged in between page refreshes
-                  localStorage.setItem(config.authToken, JSON.stringify({ username: username, token: token }));
+                  //localStorage.setItem(config.authTokenName, JSON.stringify({ username: username, token: token }));
+                  localStorage.setItem(config.authTokenName, JSON.stringify( token) );
 
                   // return true to indicate successful login
                   return true;
@@ -74,7 +75,7 @@ constructor(  private http :Http ) {
 
    isAuthenticated(): boolean{
      //TODO: verifier si l'usager connecté  ou non
-     return localStorage.getItem(config.authToken)!= null;
+     return localStorage.getItem(config.authTokenName)!= null;
   } 
 */
 
