@@ -1,11 +1,14 @@
 <div class="row">
     <h1 class="text-primary">Guest services</h1>
-    <form #myForm="ngForm" (ngSubmit) = "submitForm(myForm)">
+    <form #bookingForm="ngForm"  (ngSubmit) = "submitForm(bookingForm)">
         <div class="col-md-12">
             <div class="form-group">
-                <label for="Name">Title</label>
-                <input type="text" class="form-control" name="bookingTitle"  [(ngModel)] ="booking.name" placeholder="Enter booking title"/>
-            </div>
+                <label for="bookingTitle">Title</label>
+                <input type="text" class="form-control" name="bookingTitle"  
+                [(ngModel)] ="booking.name" placeholder="Enter booking title"
+                required minlength="4" maxlength="200"  />
+                <div *ngIf="formErrors.bookingTitle" class="alert alert-danger">{{ formErrors.bookingTitle }}</div>
+            </div>  
         </div>
         <div class="col-md-6">
             <div class="form-group">
