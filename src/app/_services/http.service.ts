@@ -1,20 +1,33 @@
+//http://www.adonespitogo.com/articles/angular-2-extending-http-provider/
+
 import {Injectable} from '@angular/core';
 import {Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+export class MyToken
+{
+  access_token:string;
+}
+
 @Injectable()
 export class HttpService extends Http {
 
   constructor (backend: XHRBackend, options: RequestOptions) {
-    let token = localStorage.getItem('auth_token'); // your custom token getter function here
+    let token = (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token; // your custom token getter function here
+
     options.headers.set('Authorization', `Bearer ${token}`);
     super(backend, options);
   }
 
+gettoken():string
+{
+  return (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token;
+}
+
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
-    let token = localStorage.getItem('auth_token');
+    let token = (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token; // localStorage.getItem('auth_token');
     if (typeof url === 'string') { // meaning we have to add the token to the options, not in url
       if (!options) {
         // let's make option object

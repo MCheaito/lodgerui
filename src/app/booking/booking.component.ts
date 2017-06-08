@@ -30,12 +30,12 @@ booking: Booking;
   { 
 
     this.booking = new Booking();
-    /*
+
     this.route.params
     //(+) converts string 'id' to a number
     .switchMap((params: Params) => this._service.getBooking(params['id']))
     .subscribe((booking: Booking) => this.booking = booking);
-*/
+
    }
 
   ngOnInit() {

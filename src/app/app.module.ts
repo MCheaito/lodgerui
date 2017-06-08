@@ -39,7 +39,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
     providers: [
         AuthGuard,
         {
-            provide: Http ,useClass:HttpService,
+            provide: HttpService ,
             useFactory: httpFactory,
             deps: [XHRBackend, RequestOptions]
         }

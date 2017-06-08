@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {config} from '../config';
 import {Booking,BookingTypes,Promotions} from '../_models/index';
+import {HttpService} from './http.service';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -10,18 +11,18 @@ export class BookingService {
  private apiJsonUrl = 'assets/data/';  // URL to web api
  private apiUrl = config.url+'api/booking';  // URL to web api
 
-  constructor(private http:Http) {  
+  constructor(private _http:HttpService) {  
 
   }
 
-  getListOfPromotions():Promise<Promotions[]> {
-    return this.http.get(config.apiJsonUrl+'promotions-list.json')
+  getListOfPromotions():Promise<Promotions[]>{
+    return this._http.get(config.apiJsonUrl+'promotions-list.json')
                 .toPromise() 
-                .then(res =>  res.json().data as Promotions[]);
-}
+               .then(res =>  res.json().data as Promotions[]);
+} 
 
 getListOfBookingTypes():Promise<BookingTypes[]> {
-    return this.http.get(config.apiJsonUrl+'booking-types-list.json')
+    return this._http.get(config.apiJsonUrl+'booking-types-list.json')
                 .toPromise()
                 .then(res =>  res.json().data as BookingTypes[]);
 }
@@ -30,7 +31,7 @@ getBooking(id:string):Promise<Booking>
 {
   const url = `${this.apiUrl}/${id}`;
 //const url = `${this.apiUrl}/booking-test.json`;
- var resultats=  this.http
+ var resultats=  this._http
                     .get(url)
                     .map(this.extractData)
                     .toPromise()
@@ -41,6 +42,18 @@ getBooking(id:string):Promise<Booking>
 
   return resultats;
 }
+
+
+/*getBooking(id:string)
+{
+  const url = `${this.apiUrl}/${id}`;
+return   this._http
+                    .get(url)
+                    .map((res) => {return res.json(); } );
+
+  
+}*/
+
 private extractData(res: Response) {
   let data = res.json();
   
