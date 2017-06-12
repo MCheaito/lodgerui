@@ -1,17 +1,20 @@
+import { BookingsComponent } from './bookings.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule }  from '@angular/router';
-import {BookingComponent} from './booking.component';
+import {BookingDetailComponent} from './booking-detail.component';
 import {BookingListComponent} from './booking-list.component';
+
 
 @NgModule({
   imports: [
     CommonModule, 
     RouterModule.forChild([
-    {path: '', component: BookingComponent},
-    {path: ':id', component: BookingComponent},
+    {path: '', component: BookingsComponent}
+    /*,
+    {path: ':id', component: BookingDetailComponent},
     {path: 'search', component: BookingListComponent}
-  
+  */
     ])
   ],
   declarations: []

@@ -15,19 +15,23 @@ export class MyToken
 export class HttpService extends Http {
 
   constructor (backend: XHRBackend, options: RequestOptions) {
-    let token = (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token; // your custom token getter function here
+    //let token = (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token+''; // your custom token getter function here
 
-    options.headers.set('Authorization', `Bearer ${token}`);
+    //options.headers.set('Authorization', `Bearer ${token}`);
     super(backend, options);
   }
 
 gettoken():string
 {
+  var ls = localStorage.getItem('auth_token'); 
+  
+  if (ls==null) return '';
+
   return (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token;
 }
 
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
-    let token = (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token; // localStorage.getItem('auth_token');
+    let token = this.gettoken();  //(JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token+'';
     if (typeof url === 'string') { // meaning we have to add the token to the options, not in url
       if (!options) {
         // let's make option object

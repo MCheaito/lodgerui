@@ -9,12 +9,12 @@ import {BookingService} from '../_services/index';
 import {Promotions,BookingTypes,Booking} from '../_models/index';
 
 @Component({
-  selector: 'app-booking',
-  templateUrl: './booking.component.html',
-  styleUrls: ['./booking.component.css']
+  selector: 'app-booking-detail',
+  templateUrl: './booking-detail.component.html',
+  styleUrls: ['./booking-detail.component.css']
 })
 
-export class BookingComponent implements OnInit {
+export class BookingDetailComponent implements OnInit {
 promotionList:Promotions[];
 bookingTypesList: BookingTypes[];
 messages:string[];

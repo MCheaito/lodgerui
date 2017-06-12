@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
-import {BookingService} from '../_services/index';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
-  selector: 'app-booking-list',
+  selector: 'rx-booking-list',
   templateUrl: './booking-list.component.html',
   styleUrls: ['./booking-list.component.css']
 })
-export class BookingListComponent implements OnInit {
+export class BookingListComponent{
 
-  constructor(
-      private route: ActivatedRoute,
-      private router: Router,
-      private service: BookingService
-      ) 
-  { }
+    @Input() bookings;
+    @Input() selectedBooking;
 
-  ngOnInit() {
-  }
+    @Output() onSelect = new EventEmitter();
+    @Output() onDelete = new EventEmitter();
+
+    delete($event, booking) {
+        $event.stopPropagation();
+        this.onDelete.emit(booking);
+    }
+
 
 }

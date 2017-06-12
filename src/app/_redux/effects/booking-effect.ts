@@ -1,57 +1,46 @@
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/skip';
-import 'rxjs/add/operator/takeUntil';
-import { Injectable } from '@angular/core';
-import { Effect, Actions, toPayload } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { empty } from 'rxjs/observable/empty';
-import { of } from 'rxjs/observable/of';
 
-import { BookingService } from '../../_services/booking.service';
-import * as book from '../actions/booking-action';
+import {Injectable} from '@angular/core';
+import {Effect, Actions} from '@ngrx/effects';
 
-
-/**
- * Effects offer a way to isolate and easily test side-effects within your
- * application.
- * The `toPayload` helper function returns just
- * the payload of the currently dispatched action, useful in
- * instances where the current state is not necessary.
- *
- * Documentation on `toPayload` can be found here:
- * https://github.com/ngrx/effects/blob/master/docs/api.md#topayload
- *
- * If you are unfamiliar with the operators being used in these examples, please
- * check out the sources below:
- *
- * Official Docs: http://reactivex.io/rxjs/manual/overview.html#categories-of-operators
- * RxJS 5 Operators By Example: https://gist.github.com/btroncone/d6cf141d6f2c00dc6b35
- */
+import {AppState} from '../reducers';
+import {BookingActions} from '../actions/booking-action';
+import {BookingService} from '../../_services/booking.service';
 
 @Injectable()
-export class BookEffects {
+export class BookingEffects {
+    constructor (
+        private update$: Actions,
+        private bookingActions: BookingActions,
+        private svc: BookingService,
+    ) {}
 
-  @Effect()
-  search$: Observable<Action> = this.actions$
-    .ofType(book.ActionTypes.SEARCH)
-    .debounceTime(300)
-    .map(toPayload)
-    .switchMap(query => {
-      if (query === '') {
-        return empty();
-      }
+    @Effect() loadBookinges$ = this.update$
+        .ofType(BookingActions.LOAD_BOOKINGS)
+        .switchMap(() => this.svc.getAllBooking())
+        .map(res => this.bookingActions.loadBookingsSuccess(res));
 
-      const nextSearch$ = this.actions$.ofType(book.ActionTypes.SEARCH).skip(1);
+    /*@Effect() getBooking$ = this.update$
+        .ofType(BookingActions.GET_HERO)
+        .map<string>(action => action.payload)
+        .switchMap(id => this.svc.getBooking(id))
+        .map(booking => this.bookingActions.getBookingSuccess(booking));
 
-      return this.bookingService.searchBooks(query)
-        .takeUntil(nextSearch$)
-        .map(books => new book.SearchCompleteAction(books))
-        .catch(() => of(new book.SearchCompleteAction([])));
-    });
+    @Effect() saveBooking$ = this.update$
+        .ofType(BookingActions.SAVE_HERO)
+        .map(action => action.payload)
+        .switchMap(booking => this.svc.saveBooking(booking))
+        .map(booking => this.bookingActions.saveBookingSuccess(booking));
 
-    constructor(private actions$: Actions, private bookingService: BookingService) { }
-}   
+    @Effect() addBooking$ = this.update$
+        .ofType(BookingActions.ADD_HERO)
+        .map(action => action.payload)
+        .switchMap(booking => this.svc.saveBooking(booking))
+        .map(booking => this.bookingActions.addBookingSuccess(booking));*/
+
+    @Effect() deleteBooking$ = this.update$
+        .ofType(BookingActions.DELETE_BOOKING)
+        .map(action => action.payload)
+        .switchMap(booking => this.svc.deleteBooking(booking))
+        .map(booking => this.bookingActions.deleteBookingSuccess(booking));
+}
+

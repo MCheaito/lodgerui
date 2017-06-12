@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 
 import {BookingRoutingModule} from './booking-routing.module';
-import {BookingComponent} from './booking.component';
+import {BookingDetailComponent} from './booking-detail.component';
 import {BookingListComponent} from './booking-list.component';
 import {BookingService} from '../_services/index';
+import {BookingsComponent} from './bookings.component';
 
 @NgModule({
   imports: [
@@ -14,8 +15,8 @@ import {BookingService} from '../_services/index';
     BookingRoutingModule  // doit etre la
   ],
   declarations: [
-    BookingComponent, 
-    BookingListComponent
+    BookingDetailComponent, 
+    BookingListComponent, BookingsComponent
     ],
   providers: [ BookingService ]
 })

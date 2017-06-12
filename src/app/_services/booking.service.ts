@@ -44,11 +44,20 @@ getBooking(id:string):Promise<Booking>
   return resultats;
 }
 
+searchBooks(queryTitle: string): Observable<Booking[]> {
+  return this._http.get(`${this.apiUrl}?q=${queryTitle}`)
+    .map(res => res.json().items || []);
+}
 
-  searchBooks(queryTitle: string): Observable<Booking[]> {
-    return this._http.get(`${this.apiUrl}?q=${queryTitle}`)
-      .map(res => res.json().items || []);
-  }
+getAllBooking(): Observable<Booking[]> {
+return this._http.get(`${this.apiUrl}/all`)
+.map(res => res.json());
+}
+
+    deleteBooking(booking) {
+        return this._http.delete(`${this.apiUrl}/` + booking.bookingGuid)
+        .map(res => booking);
+    }
 
 
 /*getBooking(id:string)

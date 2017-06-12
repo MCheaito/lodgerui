@@ -1,3 +1,12 @@
-<p>
-  booking-list works!
-</p>
+<ul >
+    <li 
+        *ngFor="let booking of bookings"
+        (click)="onSelect.emit(booking)"
+        [class.selected]="booking === selectedBooking"
+    >
+        <span >
+            <span class="badge">{{booking.BookingGuid}}</span> {{booking.name}}
+        </span>
+        <button class="delete-button" (click)="delete($event, hero)">Delete</button>
+    </li>
+</ul> 
