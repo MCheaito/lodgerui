@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import {config} from '../config';
 import {Booking,BookingTypes,Promotions} from '../_models/index';
 import {HttpService} from './http.service';
@@ -42,6 +43,12 @@ getBooking(id:string):Promise<Booking>
 
   return resultats;
 }
+
+
+  searchBooks(queryTitle: string): Observable<Booking[]> {
+    return this._http.get(`${this.apiUrl}?q=${queryTitle}`)
+      .map(res => res.json().items || []);
+  }
 
 
 /*getBooking(id:string)

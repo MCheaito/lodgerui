@@ -32,3 +32,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Angular v4 typescript snippet
 ## Auto import 
 ## beautify 
+## install NrGx  : npm install @ngrx/core @ngrx/store --save
+##                 npm install @ngrx/store-devtools --save
+## https://medium.com/@flashMasterJim/the-basics-of-ngrx-effects-effect-and-async-middleware-for-ngrx-store-in-angular-2-f25587493329
+## on peut utiliser le BD firebase de google
+## npm install angularfire2 --save
+## info about redux  Rxjs : http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html
