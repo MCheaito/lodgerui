@@ -19,12 +19,12 @@ export class BookingEffects {
         .switchMap(() => this.svc.getAllBooking())
         .map(res => this.bookingActions.loadBookingsSuccess(res));
 
-    /*@Effect() getBooking$ = this.update$
-        .ofType(BookingActions.GET_HERO)
-        .map<string>(action => action.payload)
+    @Effect() getBooking$ = this.update$
+        .ofType(BookingActions.GET_BOOKING)
+        .map(action => action.payload)
         .switchMap(id => this.svc.getBooking(id))
         .map(booking => this.bookingActions.getBookingSuccess(booking));
-
+/*
     @Effect() saveBooking$ = this.update$
         .ofType(BookingActions.SAVE_HERO)
         .map(action => action.payload)
@@ -40,7 +40,7 @@ export class BookingEffects {
     @Effect() deleteBooking$ = this.update$
         .ofType(BookingActions.DELETE_BOOKING)
         .map(action => action.payload)
-        .switchMap(booking => this.svc.deleteBooking(booking))
+        .switchMap(id => this.svc.deleteBooking(id))
         .map(booking => this.bookingActions.deleteBookingSuccess(booking));
 }
 

@@ -36,7 +36,29 @@ export class BookingActions {
         };
     }
 
+    static GET_BOOKING ='[Booking] Get Booking';
+    getBooking(id:string):Action {
+        return {
+            type: BookingActions.GET_BOOKING, 
+            payload:id
+        };
+    }
 
+    static GET_BOOKING_SUCCESS = '[Booking] Get Booking Success'
+    getBookingSuccess(booking):Action {
+        return {
+            type:BookingActions.GET_BOOKING_SUCCESS,
+            payload: booking
+        };
+    }
+
+      static RESET_BLANK_BOOKING = '[Booking] Get Booking Success'
+    resetBookingBlank(booking):Action {
+        return {
+            type:BookingActions.RESET_BLANK_BOOKING,
+            payload: booking
+        };
+    }
 }
 
 
