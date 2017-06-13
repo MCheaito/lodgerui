@@ -11,19 +11,20 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterStoreModule } from "@ngrx/router-store";
 import { DBModule } from '@ngrx/db';
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './footer/footer.component';
-import { ContactComponent } from './contact/contact.component';
+import { NavComponent } from './components/nav/nav.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthGuard } from './authentication/auth.guard';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AuthGuard } from './components/authentication/auth.guard';
 import { HttpService} from  './_services/http.service';
 import { BookingService } from './_services/booking.service';
-import {BookingModule} from  './booking/booking.module';
+import {BookingModule} from  './components/booking/booking.module';
 import { BookingActions } from './_redux/actions/booking-action';
 import { BookingEffects } from './_redux/effects/booking-effect';
 import reducer from './_redux/reducers';
+import { ModalComponent } from './components/modal/modal.component';
 
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
   return  new HttpService(backend, defaultOptions);
@@ -37,7 +38,8 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         FooterComponent,
         ContactComponent,
         AuthenticationComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        ModalComponent
             ],
     imports: [
         MaterialModule,

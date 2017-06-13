@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthGuard } from './authentication/auth.guard';
-import { HomeComponent} from './home/home.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AuthGuard } from './components/authentication/auth.guard';
+import { HomeComponent} from './components/home/home.component';
 
 
 

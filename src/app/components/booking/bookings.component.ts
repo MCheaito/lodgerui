@@ -3,9 +3,9 @@ import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {Router} from '@angular/router';
 
-import { BookingActions } from './../_redux/actions/booking-action';
-import { Booking } from './../_models/booking.model';
-import {AppState} from '../_redux/reducers';
+import { BookingActions } from '../../_redux/actions/booking-action';
+import { Booking } from '../../_models/booking.model';
+import {AppState} from '../../_redux/reducers';
 import { BookingListComponent } from './booking-list.component';
 
 

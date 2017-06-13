@@ -38,3 +38,4 @@ export default function (state = initialState, action: Action): BookingState {
             return state;
         }
     }
+}

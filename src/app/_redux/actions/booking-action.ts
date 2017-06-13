@@ -52,7 +52,7 @@ export class BookingActions {
         };
     }
 
-      static RESET_BLANK_BOOKING = '[Booking] Get Booking Success'
+    static RESET_BLANK_BOOKING = '[Booking] Get Booking Success'
     resetBookingBlank(booking):Action {
         return {
             type:BookingActions.RESET_BLANK_BOOKING,

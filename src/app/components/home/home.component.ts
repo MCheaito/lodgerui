@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { options } from '../_models/index';
-import { config } from "../config";
+import { options } from '../../_models/index';
+import { config } from "../../config";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

@@ -38,3 +38,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## on peut utiliser le BD firebase de google
 ## npm install angularfire2 --save
 ## info about redux  Rxjs : http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html
+
+
+############ Underscore
+Underscore is a JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects. It’s the answer to the question: “If I sit down in front of a blank HTML page, and want to start being productive immediately, what do I need?” … and the tie to go along with jQuery's tux and Backbone's suspenders.
