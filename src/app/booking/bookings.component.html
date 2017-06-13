@@ -1,11 +1,9 @@
-<p>
-  bookings works!
-</p>
 <rx-booking-list
     [bookings]="bookings | async"
     [selectedBooking]="selectedBooking"
     (onSelect)="select($event)"
     (onDelete)="delete($event)"
+    (onEdit)="edit($event)"
 ></rx-booking-list>
 
 

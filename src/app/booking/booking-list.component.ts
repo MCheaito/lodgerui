@@ -12,11 +12,16 @@ export class BookingListComponent{
 
     @Output() onSelect = new EventEmitter();
     @Output() onDelete = new EventEmitter();
+    @Output() onEdit = new EventEmitter();
 
     delete($event, booking) {
         $event.stopPropagation();
         this.onDelete.emit(booking);
     }
 
+    edit($event, booking) {
+        $event.stopPropagation();
+        this.onEdit.emit(booking);
+    }
 
 }

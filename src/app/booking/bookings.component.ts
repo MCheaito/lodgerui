@@ -26,31 +26,33 @@ export class BookingsComponent implements OnInit {
         this.bookings = store.select('bookings');
     }
 
-  ngOnInit() {
-      this.store.dispatch(this.bookingActions.loadBookings());
-  }
+    ngOnInit() {
+        this.store.dispatch(this.bookingActions.loadBookings());
+    }
 
-    delete(booking) {
+    delete(booking:Booking) {
         this.store.dispatch(this.bookingActions.deleteBooking(booking));
     }
+
+     select(booking) {
+        this.selectedBooking = booking;
+        this.addingBooking = false;
+    }
+    edit(booking){
+       alert(booking.name);
+    }
+}
+
      /*addHero() {
         this.addingHero = true;
         this.selectedHero = null;
     }
 
     close() {
-        this.addingHero = false;
+        this.addingHero = false;    
     }
-
-
-
-    select(hero) {
-        this.selectedHero = hero;
-        this.addingHero = false;
-    }
-
     gotoDetail() {
         this.router.navigate(['/detail/', this.selectedHero.id]);
     }*/
 
-}
+

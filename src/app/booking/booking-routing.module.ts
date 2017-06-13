@@ -10,11 +10,8 @@ import {BookingListComponent} from './booking-list.component';
   imports: [
     CommonModule, 
     RouterModule.forChild([
-    {path: '', component: BookingsComponent}
-    /*,
-    {path: ':id', component: BookingDetailComponent},
-    {path: 'search', component: BookingListComponent}
-  */
+    {path: '', component: BookingsComponent} ,
+    {path: ':id', component: BookingDetailComponent}
     ])
   ],
   declarations: []

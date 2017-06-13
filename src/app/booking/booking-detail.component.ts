@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewChecked, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild , Input, Output, OnChanges, EventEmitter, 
+          trigger, state, style, animate, transition} from '@angular/core';
 import {NgForm} from '@angular/forms';
-//todo ajouter les validatore 
+//todo ajouter les validators
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
@@ -11,10 +12,25 @@ import {Promotions,BookingTypes,Booking} from '../_models/index';
 @Component({
   selector: 'app-booking-detail',
   templateUrl: './booking-detail.component.html',
-  styleUrls: ['./booking-detail.component.css']
+  styleUrls: ['./booking-detail.component.css'],
+  animations: [
+    trigger('dialog', [
+      transition('void => *', [
+        style({ transform: 'scale3d(.3, .3, .3)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
+      ])
+    ])
+  ]
 })
 
 export class BookingDetailComponent implements OnInit {
+ @Input() closable = true;
+ @Input() visible: boolean;
+ @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
 promotionList:Promotions[];
 bookingTypesList: BookingTypes[];
 messages:string[];
