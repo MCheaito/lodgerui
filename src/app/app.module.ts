@@ -1,3 +1,4 @@
+import { HomeComponent } from './components/home/home.component';
 
 import { HttpModule, Http , RequestOptions, XHRBackend } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,17 +19,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './components/authentication/auth.guard';
-import { HttpService} from  './_services/http.service';
+import { HttpService, ModalService} from  './_services';
 import { BookingService } from './_services/booking.service';
 import {BookingModule} from  './components/booking/booking.module';
 import { BookingActions } from './_redux/actions/booking-action';
 import { BookingEffects } from './_redux/effects/booking-effect';
 import reducer from './_redux/reducers';
 import { ModalComponent } from './components/modal/modal.component';
-
+/*
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
   return  new HttpService(backend, defaultOptions);
-}
+}*/
 
 
 @NgModule({
@@ -39,7 +40,8 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         ContactComponent,
         AuthenticationComponent,
         PageNotFoundComponent,
-        ModalComponent
+        ModalComponent, 
+        HomeComponent
             ],
     imports: [
         MaterialModule,
@@ -56,13 +58,18 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
     ],
     providers: [
         AuthGuard,
-        BookingService,BookingActions,
-        {
+        BookingService,
+        BookingActions,
+        ModalService,
+        { provide: Http, useClass: HttpService }
+        
+        /*{
             provide: HttpService ,
-            useFactory: httpFactory,
-
+            useFactory: (backend: XHRBackend, options: RequestOptions) => {
+        return new HttpService(backend, options);
+             },
             deps: [XHRBackend, RequestOptions]
-        }
+        }*/
     ],
     entryComponents: [AppComponent],
     bootstrap: [AppComponent]

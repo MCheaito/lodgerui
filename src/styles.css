@@ -11,9 +11,15 @@ body {
   padding: 3rem 1.5rem;
   text-align: center;
 }
-@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
-@import '../node_modules/bootswatch/spacelab/bootstrap.min.css';
-/*@import '../node_modules/bootswatch/slate/bootstrap.min.css';*/
+
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';       
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+
+
+/*t '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+*/
+/*@import '../node_modules/bootswatch/spacelab/bootstrap.min.css';*/
+
 /*@import '../node_modules/bootswatch/cyborg/bootstrap.min.css';
 @import '../node_modules/bootswatch/journal/bootstrap.min.css';
 @import '../node_modules/bootswatch/lumen/bootstrap.min.css';

@@ -1,7 +1,8 @@
 import { Component, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
 import * as $ from 'jquery';
-
 import { ModalService } from '../../_services/index';
+
+//https://scotch.io/tutorials/angular-2-transclusion-using-ng-content  about <ng-content>
 
 @Component({
     moduleId: module.id.toString(),

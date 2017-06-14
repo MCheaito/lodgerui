@@ -5,16 +5,15 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AuthGuard } from './components/authentication/auth.guard';
 import { HomeComponent} from './components/home/home.component';
 
-
-
 export const ROUTES: Routes = [
- //   { path: '', loadChildren: './home/home.module#HomeModule'},
-//    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+   // { path: 'home', loadChildren:'./components/home/home.module#HomeModule'},
+  // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'home', component: HomeComponent },
+ 
     { path: 'login', component: AuthenticationComponent },
     { path: 'logout', component: AuthenticationComponent }, 
- //   { path: 'booking', loadChildren: './booking/booking.module#BookingModule'},
+    { path: 'booking', loadChildren:'./components/booking/booking.module#BookingModule'},
     { path:'**', component:PageNotFoundComponent}
-
 ];
 
 @NgModule({

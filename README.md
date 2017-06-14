@@ -42,3 +42,26 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ############ Underscore
 Underscore is a JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects. It’s the answer to the question: “If I sit down in front of a blank HTML page, and want to start being productive immediately, what do I need?” … and the tie to go along with jQuery's tux and Backbone's suspenders.
+
+
+## Open browser with npm 
+This can be achieved by including a couple of additional packages in your project.
+
+Additional packages
+
+Install http-server:
+
+$ npm install http-server --save-dev
+
+and concurrently:
+
+$ npm install concurrently --save-dev
+
+npm scripts
+
+Add the following open script to package.json:
+
+"scripts": {
+    "start": "npm run open",
+    "open": "concurrently \"http-server -a localhost -p 1234\" \"open http://localhost:1234/build\""
+ }

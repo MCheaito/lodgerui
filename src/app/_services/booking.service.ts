@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {config} from '../config';
 import {Booking,BookingTypes,Promotions} from '../_models/index';
-import {HttpService} from './http.service';
+//import {HttpService} from './http.service';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -12,7 +12,7 @@ export class BookingService {
  private apiJsonUrl = 'assets/data/';  // URL to web api
  private apiUrl = config.url+'api/booking';  // URL to web api
 
-  constructor(private _http:HttpService) {  
+  constructor(private _http:Http) {  
 
   }
 
