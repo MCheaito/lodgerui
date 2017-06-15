@@ -1,5 +1,5 @@
 import { HomeComponent } from './components/home/home.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, Http , RequestOptions, XHRBackend } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -19,13 +19,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './components/authentication/auth.guard';
-import { HttpService, ModalService} from  './_services';
-import { BookingService } from './_services/booking.service';
+import { HttpService, BookingService,ShowMessageService} from  './_services';
 import {BookingModule} from  './components/booking/booking.module';
 import { BookingActions } from './_redux/actions/booking-action';
 import { BookingEffects } from './_redux/effects/booking-effect';
 import reducer from './_redux/reducers';
-import { ModalComponent } from './components/modal/modal.component';
 import { ShowMessageComponent } from './components/show-message/show-message.component';
 /*
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
@@ -41,7 +39,6 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         ContactComponent,
         AuthenticationComponent,
         PageNotFoundComponent,
-        ModalComponent, 
         HomeComponent, ShowMessageComponent
             ],
     imports: [
@@ -50,6 +47,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         FormsModule,
         HttpModule,
         BookingModule,
+        BrowserAnimationsModule,
         EffectsModule.run(BookingEffects),
         StoreModule.provideStore(reducer),
         StoreDevtoolsModule.instrumentOnlyWithExtension({
@@ -61,7 +59,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         AuthGuard,
         BookingService,
         BookingActions,
-        ModalService,
+        ShowMessageService,
         { provide: Http, useClass: HttpService }
         
         /*{

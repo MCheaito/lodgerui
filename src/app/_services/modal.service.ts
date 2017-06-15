@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as _  from 'underscore';
 
-//http://jasonwatmore.com/post/2017/01/24/angular-2-custom-modal-window-dialog-box
+
 
 @Injectable()
 export class ModalService {

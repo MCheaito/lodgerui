@@ -65,3 +65,6 @@ Add the following open script to package.json:
     "start": "npm run open",
     "open": "concurrently \"http-server -a localhost -p 1234\" \"open http://localhost:1234/build\""
  }
+
+
+## http://jasonwatmore.com/post/2017/01/24/angular-2-custom-modal-window-dialog-box

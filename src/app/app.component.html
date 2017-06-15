@@ -2,4 +2,9 @@
 <div class="container">
     <router-outlet></router-outlet>
 </div>
+<app-dialog 
+    [(visible)]="showMessageSvc.visible" 
+    [title]="showMessageSvc.title"
+    [message] ="showMessageSvc.message"> 
+</app-dialog>
 <app-footer></app-footer>

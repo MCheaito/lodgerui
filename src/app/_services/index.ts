@@ -3,4 +3,4 @@ export * from './booking.service';
 export * from './user.service';
 export * from './http.service';
 export * from './modal.service';
-//export * from './app-config.service';
+export * from './show-message.service';

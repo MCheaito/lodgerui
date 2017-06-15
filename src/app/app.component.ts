@@ -1,3 +1,4 @@
+import { ShowMessageService } from './_services/show-message.service';
 import { Component } from '@angular/core';
 
 
@@ -9,7 +10,13 @@ import { Component } from '@angular/core';
   ]
 })
 export class AppComponent {
-  title = 'my app works!';
+
+  constructor(private showMessageSvc: ShowMessageService)
+  {
+    showMessageSvc.message="Hello World!";
+    showMessageSvc.title="Bienvenue!";
+
+  }
 }
 
 
