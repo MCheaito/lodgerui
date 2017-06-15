@@ -26,6 +26,7 @@ import { BookingActions } from './_redux/actions/booking-action';
 import { BookingEffects } from './_redux/effects/booking-effect';
 import reducer from './_redux/reducers';
 import { ModalComponent } from './components/modal/modal.component';
+import { ShowMessageComponent } from './components/show-message/show-message.component';
 /*
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
   return  new HttpService(backend, defaultOptions);
@@ -41,7 +42,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         AuthenticationComponent,
         PageNotFoundComponent,
         ModalComponent, 
-        HomeComponent
+        HomeComponent, ShowMessageComponent
             ],
     imports: [
         MaterialModule,

@@ -4,12 +4,50 @@
         {{appName}} by ProMax Software is a hotel management solution for small or medium-sized hospitality businesses.
         This cloud-based solution was developed with growing independent hotels, inns, lodges, resorts, and other property types in mind.
     </p>
-    <p><button class="btn btn-primary btn-lg"  (click)="openModal('custom-modal-1')" ></button></p>
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Learn more</button>
-
+    <p><button class="btn btn-primary btn-lg"  (click)="openModal('custom-modal-2')" >Learn More</button></p>
 </div>
-<div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+
+<modal id="custom-modal-1">
+    <div class="modal-dialog"  >
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <div class="modal-body">
+                <div class="row">
+                    <h2>Page Content</h2>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+                    Aliquam in felis sit amet augue.
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+                    Aliquam in felis sit amet augue.
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+                    Aliquam in felis sit amet augue.
+                    <br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+                    Aliquam in felis sit amet augue.
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="closeModal('custom-modal-1');" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+       </div>
+   </div>            
+
+</modal>
+
+<modal id="custom-modal-2">
+    <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -22,8 +60,9 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
         </div>
+      
     </div>
-  </div>
-</div>
+      <div class="modal-dialog-background"></div>
+    </div>
 
-
+</modal>
