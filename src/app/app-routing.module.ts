@@ -1,3 +1,4 @@
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
@@ -9,9 +10,9 @@ export const ROUTES: Routes = [
    // { path: 'home', loadChildren:'./components/home/home.module#HomeModule'},
   // { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'home', component: HomeComponent },
- 
     { path: 'login', component: AuthenticationComponent },
     { path: 'logout', component: AuthenticationComponent }, 
+    { path: 'dashboard', component: DashboardComponent }, 
     { path: 'booking', loadChildren:'./components/booking/booking.module#BookingModule'},
     { path:'**', component:PageNotFoundComponent}
 ];

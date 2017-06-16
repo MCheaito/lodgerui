@@ -18,7 +18,6 @@
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
-    "@angular/material": "^2.0.0-beta.6",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
@@ -38,13 +37,14 @@
     "jquery": "~3.2.1",
     "jquery-validation": "~1.16.0",
     "jquery-validation-unobtrusive": "~3.2.6",
+    "ng2-charts": "^1.6.0",
     "reselect": "^3.0.1",
     "rxjs": "^5.1.0",
     "underscore": "^1.8.3",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.6",
+    "@angular/cli": "^1.1.2",
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",

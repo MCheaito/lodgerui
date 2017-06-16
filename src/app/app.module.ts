@@ -1,3 +1,4 @@
+import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, Http , RequestOptions, XHRBackend } from '@angular/http';
@@ -5,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -25,6 +25,7 @@ import { BookingActions } from './_redux/actions/booking-action';
 import { BookingEffects } from './_redux/effects/booking-effect';
 import reducer from './_redux/reducers';
 import { ShowMessageComponent } from './components/show-message/show-message.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 /*
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
   return  new HttpService(backend, defaultOptions);
@@ -39,12 +40,12 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         ContactComponent,
         AuthenticationComponent,
         PageNotFoundComponent,
-        HomeComponent, ShowMessageComponent
+        HomeComponent, ShowMessageComponent, DashboardComponent
             ],
     imports: [
-        MaterialModule,
         BrowserModule,
         FormsModule,
+        ChartsModule,
         HttpModule,
         BookingModule,
         BrowserAnimationsModule,

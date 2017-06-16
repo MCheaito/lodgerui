@@ -15,9 +15,9 @@ export class MyToken
 export class HttpService extends Http {
 
   constructor (backend: XHRBackend, options: RequestOptions) {
-    let token = (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token+''; // your custom token getter function here
+    // let token = (JSON.parse(localStorage.getItem('auth_token')) as MyToken).access_token+''; // your custom token getter function here
 
-    options.headers.set('Authorization', `Bearer ${token}`);
+    // options.headers.set('Authorization', `Bearer ${token}`);
     super(backend, options);
   }
 

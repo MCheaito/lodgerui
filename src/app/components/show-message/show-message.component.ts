@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+//https://coryrylan.com/blog/build-a-angular-modal-dialog-with-angular-animate
+
 @Component({
   selector: 'app-dialog',
   templateUrl: './show-message.component.html',
