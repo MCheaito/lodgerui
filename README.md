@@ -71,3 +71,17 @@ Add the following open script to package.json:
 
 
 ## theme : https://wdtz.org/bootswatch-theme-selector.html
+
+## 2017-06-17
+npm install ng2-charts --save
+
+## https://www.strapui.com/themes/ani-angular-4-bootstrap-4-theme/
+## c3.js charting library  : http://c3js.org/
+## https://fullcalendar.io/   et https://github.com/fullcalendar/fullcalendar 
+## https://github.com/jkuri/ng2-datepicker
+## https://github.com/akveo/ng2-smart-table
+## https://github.com/MurhafSousli/ngx-progressbar
+## https://github.com/ngx-translate/core
+## https://github.com/ngx-translate/http-loader
+
+
