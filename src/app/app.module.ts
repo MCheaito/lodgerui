@@ -26,6 +26,7 @@ import { BookingEffects } from './_redux/effects/booking-effect';
 import reducer from './_redux/reducers';
 import { ShowMessageComponent } from './components/show-message/show-message.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 /*
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
   return  new HttpService(backend, defaultOptions);
@@ -40,7 +41,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         ContactComponent,
         AuthenticationComponent,
         PageNotFoundComponent,
-        HomeComponent, ShowMessageComponent, DashboardComponent
+        HomeComponent, ShowMessageComponent, DashboardComponent, SidebarComponent
             ],
     imports: [
         BrowserModule,
