@@ -1,18 +1,22 @@
-<div class="list-group">
-  <div id="accordian">
+  <div id="accordian" >
     <ul>
       <li>
-        <h3 class="list-group-item active"><i class="fa fa-tachometer"></i>Dashboard</h3>
+        <h3 class="active"><i class="fa fa-home"></i>Home</h3>
         <ul>
-          <li><a href="#"><i class="fa fa-print"></i> Reports</a></li>
-          <li><a href="#"><i class="fa fa-search"></i> Search</a></li>
-          <li><a href="#">Graphs</a></li>
-          <li><a href="#">Settings</a></li>
+          <li><a  routerLink="/home">Start page</a></li>
+          <li><a routerLink="/dashboard">Dashboard</a></li>
+        </ul>
+      </li>      
+      <li>
+        <h3 class="active"><i class="fa fa-bed"></i>Booking</h3>
+        <ul>
+          <li><a  routerLink="booking">New...</a></li>
+          <li><a href="#">Search...</a></li>
         </ul>
       </li>
       <!-- we will keep this LI open by default -->
       <li class="active">
-        <h3 class="list-group-item active"><i class="fa fa-tasks"></i>Tasks</h3>
+        <h3 ><i class="fa fa-tasks"></i>Tasks</h3>
         <ul>
           <li><a href="#">Today's tasks</a></li>
           <li><a href="#">Urgent</a></li>
@@ -22,7 +26,7 @@
         </ul>
       </li>
       <li>
-        <h3 class="list-group-item active"><i class="fa fa-calendar fa-large"></i>Calendar</h3>
+        <h3 ><i class="fa fa-calendar fa-large"></i>Calendar</h3>
         <ul>
           <li><a href="#">Current Month</a></li>
           <li><a href="#">Current Week</a></li>
@@ -36,7 +40,7 @@
         </ul>
       </li>
       <li>
-        <h3 class="list-group-item active"><i class="fa fa-heart"></i>Favourites</h3>
+        <h3 ><i class="fa fa-heart"></i>Favourites</h3>
         <ul>
           <li><a href="#">Global favs</a></li>
           <li><a href="#">My favs</a></li>
@@ -44,9 +48,16 @@
           <li><a href="#">Settings</a></li>
         </ul>
       </li>
+      <li>
+        <h3 ><i class="fa fa-cog"></i>Settings</h3>
+        <ul>
+          <li><a href="#">Global favs</a></li>
+        </ul>
+      </li>      
     </ul>
   </div>
-</div>
+  
+
 <!-- prefix free to deal with vendor prefixes -->
 <!--<script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript" type="text/javascript"></script>-->
 

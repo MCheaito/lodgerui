@@ -15,12 +15,12 @@ body {
 
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';       
+@import '../node_modules/bootswatch/cerulean/bootstrap.min.css';
 
 /*t '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
-*/
+/*
 @import '../node_modules/bootswatch/spacelab/bootstrap.min.css';
-
-/*@import '../node_modules/bootswatch/cyborg/bootstrap.min.css';
+@import '../node_modules/bootswatch/cyborg/bootstrap.min.css';
 @import '../node_modules/bootswatch/journal/bootstrap.min.css';
 @import '../node_modules/bootswatch/lumen/bootstrap.min.css';
 @import '../node_modules/bootswatch/paper/bootstrap.min.css';
@@ -29,4 +29,6 @@ body {
 @import '../node_modules/bootswatch/simplex/bootstrap.min.css';
 @import '../node_modules/bootswatch/spacelab/bootstrap.min.css';
 @import '../node_modules/bootswatch/superhero/bootstrap.min.css';
-@import '../node_modules/bootswatch/united/bootstrap.min.css';*/
+@import '../node_modules/bootswatch/united/bootstrap.min.css';
+
+*/
