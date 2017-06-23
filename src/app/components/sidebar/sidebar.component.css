@@ -7,18 +7,21 @@
 * {
     margin: 0;
     padding: 0;
-    border-radius: 0px;
     }
 
-body {
-	/*background: #4EB889;*/
-	/*font-family:  arial, verdana;*/
-}
 #accordian {
 	/*background: #004050;*/
+	background: #222; /* me */
+	/*
+	// if you want to give content full height give him height: 100%;
+	// with content full height you can't apply margins to the content
+	// content full height does not work in ie http://stackoverflow.com/questions/27384433/ie-display-table-cell-child-ignores-height-100
+	*/
+
+
 	/*width: 250px;*/
 	/*margin: 100px auto 0 auto;*/
-	/*color: white;*/
+	color: white;
 	/*Some cool shadow and glow effect*/
 	/*box-shadow: 
 		0 5px 15px 1px rgba(0, 0, 0, 0.6), 
@@ -39,6 +42,7 @@ body {
 /*#accordian h3:hover {
 	text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
 }*/
+
 /*iconfont styles*/
 #accordian h3 i {
 	/*font-size: 16px;*/
@@ -53,18 +57,14 @@ body {
 /*	color: white;*/
 	text-decoration: none;
 	/*font-size: 11px;*/
-	line-height: 27px;
+	/*line-height: 27px;*/
 	display: block;
 	padding: 0 15px;
 	/*transition for smooth hover animation*/
 	transition: all 0.15s;
+
 }
-/*hover effect on links*/
-#accordian ul ul li a:hover {
-	/*background: #003545;*/
-	/*border-left: 5px solid lightgreen;*/
-    /*border-left: 5px;*/
-}
+
 /*Lets hide the non active LIs by default*/
 #accordian ul ul {
 	display: none;

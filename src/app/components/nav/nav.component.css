@@ -1,0 +1,9 @@
+.navbar {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    padding: 5px;
+}
+.navbar img {
+    height: 50%;
+    width: 50%;
+}

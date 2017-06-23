@@ -1,18 +1,39 @@
-<div class="page-container">
-    <app-dialog 
-        [(visible)]="showMessageSvc.visible" 
-        [title]="showMessageSvc.title"
-        [message] ="showMessageSvc.message"> 
-    </app-dialog>
-    <app-nav></app-nav>
+<!--<div class="page-container">
+    
         <div class="row">
-                <!-- sidebar -->
                     <div class="col-md-2" id="sidebar" role="navigation">
-                        <app-sidebar></app-sidebar>
+                        
                     </div>
                     <div class="col-md-10">
                         <router-outlet></router-outlet>
                     </div>
-    </div><!--/.container-->        
+    </div>
     <app-footer></app-footer>
+</div>-->
+
+<div class="container-fluid">
+    <header><app-nav></app-nav></header>
+    <div class="container">
+        <div class="row">       
+            <div class="row-height">
+                <aside class="col-sm-2 col-height">
+                    <app-sidebar></app-sidebar> 
+                </aside>
+                <section class="col-sm-10 col-height">
+                    <article>
+                        <router-outlet></router-outlet>
+                    </article>
+                    <article>
+                            <app-dialog 
+                                [(visible)]="showMessageSvc.visible" 
+                                [title]="showMessageSvc.title"
+                                [message] ="showMessageSvc.message"> 
+                            </app-dialog>
+                    </article>
+                </section>
+            </div>
+
+        </div>
+    </div>
+<footer class="container-fluid"><h1>FOOTER</h1></footer>
 </div>
