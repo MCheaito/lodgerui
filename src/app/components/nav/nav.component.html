@@ -1,63 +1,9 @@
-<!--<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">-->
-    <!--<nav class="navbar navbar-default navbar-fixed-side">-->
-<!--<nav class="navbar navbar-toggleable-md navbar-inverse navbar-fixed-side bg-inverse">        
-    <a class="navbar-brand" href="#">{{appName}}</a>
-    <ul class="nav navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="dropdown">
-            <a tabindex="0" data-toggle="dropdown" data-submenu>Booking<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="dropdown-submenu">
-                    <a tabindex="0" class="nav-link" routerLink="booking" >New...</a>
-                </li>
-                    <li class="dropdown-submenu">
-                    <a tabindex="0" class="nav-link" routerLink="booking" >Serch...</a>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <ul class="nav navbar-nav pull-right">
-        <li class="dropdown">
-            <a tabindex="0" data-toggle="dropdown" data-submenu>
-                <i class="fa fa-cog"></i>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" routerLink="/">Companies</a></li>
-                <li><a class="nav-link" routerLink="/">Logout</a></li>
-                <li><a class="nav-link" routerLink="/">About</a></li>         
-                <li><i class="icon-tasks"></i><a class="nav-link" routerLink="/contact">Contact</a></li>                            
-            </ul>
-        </li>        
-
-        <li class="dropdown" id="theme-dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cogs icon-large"></i> Theme<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li><a href="#" class="change-style-menu-item" rel="cyborg"><i class="icon-fixed-width icon-pencil"></i> Cyborg (Default)</a></li>
-                <li><a href="#" class="change-style-menu-item" rel="cerulean"><i class="icon-fixed-width icon-pencil"></i> Cerulean</a></li>
-                <li><a href="#" class="change-style-menu-item" rel="cosmo"><i class="icon-fixed-width icon-pencil"></i> Cosmo</a></li>
-                <li><a href="#" class="change-style-menu-item" rel="flatly"><i class="icon-fixed-width icon-pencil"></i> Flatly</a></li>
-                <li><a href="#" class="change-style-menu-item" rel="journal"><i class="icon-fixed-width icon-pencil"></i> Journal</a></li>
-                <li><a href="#" class="change-style-menu-item" rel="readable"><i class="icon-fixed-width icon-pencil"></i> Readable</a></li>
-                <li><a href="#" class="change-style-menu-item" rel="slate"><i class="icon-fixed-width icon-pencil"></i> Slate</a></li>
-                <li><a href="#" class="change-style-menu-item" rel="spacelab"><i class="icon-fixed-width icon-pencil"></i> Spacelab</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="https://twitter.com/@cheaitoMC"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="https://github.com/beeman"><i class="fa fa-github" aria-hidden="true"></i></a>
-        </li>
-    </ul>
-</nav>-->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -92,17 +38,21 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <li class="dropdown ">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/user.png" class="img-circle small-img"> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a  routerLink="/login">Sign In</a></li>
+            <li><a  routerLink="/logout">Logout</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a routerLink="/profile">Profile</a></li>
+            <li><a routerLink="/password">Change password</a></li>
+            
           </ul>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
 </nav>
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { config} from '../../config';
+import { config } from '../../config';
 
 @Component({
   selector: 'app-nav',
@@ -7,11 +7,10 @@ import { config} from '../../config';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-appName:string;
-  constructor() 
-    {
-      this.appName=config.appName;
-     }
+  appName: string;
+  constructor() {
+    this.appName = config.appName;
+  }
 
   ngOnInit() {
   }

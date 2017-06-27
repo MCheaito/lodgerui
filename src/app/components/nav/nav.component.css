@@ -3,7 +3,7 @@
     border-radius: 0px;
     padding: 5px;
 }
-.navbar img {
-    height: 50%;
-    width: 50%;
+.dropdown-toggle img {
+    height: 48px;
+    width: 48px;
 }
