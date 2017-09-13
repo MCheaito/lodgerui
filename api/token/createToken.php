@@ -1,8 +1,7 @@
 <?php
 
-require __DIR__ . '../../vendor/autoload.php';
-
-use \Firebase\JWT\JWT;
+// instantiate product object
+include_once '../objects/token.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
@@ -10,15 +9,15 @@ header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json');
 
-$key = "my_application_key";
-$token = array(
-    "iss" => "http://example.org",
-    "aud" => "http://example.com",
-    "iat" => 1356999524,
-    "nbf" => 1357000000, 
-    "name"=>"cheaito.m",
-    "jti" => bin2hex(openssl_random_pseudo_bytes(16))
-);
+// $key = "my_application_key";
+// $token = array(
+//     "iss" => "http://example.org",
+//     "aud" => "http://example.com",
+//     "iat" => 1356999524,
+//     "nbf" => 1357000000, 
+//     "name"=>"cheaito.m",
+//     "jti" => bin2hex(openssl_random_pseudo_bytes(16))
+// );
 
 /*
 
@@ -38,14 +37,20 @@ egistered Claim Names  . . . . . . . . . . . . . . . . .   9
  * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40
  * for a list of spec-compliant algorithms.
  */
-$jwt = JWT::encode($token, $key);
-$decoded = JWT::decode($jwt, $key, array('HS256'));
+// $jwt = JWT::encode($token, $key);
+// $decoded = JWT::decode($jwt, $key, array('HS256'));
 
+$token = new Token();
+$s = $token->getEncodedToken();
+
+$decode  = $token->decodeToken($s);
+
+print_r(json_encode($decode));
 
 //print_r($jwt);
 
 // make it json format
-print_r(json_encode($decoded));
+//print_r(json_encode($decoded));
 
 
 /*
@@ -53,7 +58,7 @@ print_r(json_encode($decoded));
  an associative array, you will need to cast it as such:
 */
 
-$decoded_array = (array) $decoded;
+// $decoded_array = (array) $decoded;
 
 /**
  * You can add a leeway to account for when there is a clock skew times between
@@ -62,7 +67,7 @@ $decoded_array = (array) $decoded;
  *
  * Source: http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html#nbfDef
  */
-JWT::$leeway = 60; // $leeway in seconds
-$decoded = JWT::decode($jwt, $key, array('HS256'));
+// JWT::$leeway = 60; // $leeway in seconds
+// $decoded = JWT::decode($jwt, $key, array('HS256'));
 
 ?>
