@@ -83,5 +83,5 @@ npm install ng2-charts --save
 ## https://github.com/MurhafSousli/ngx-progressbar
 ## https://github.com/ngx-translate/core
 ## https://github.com/ngx-translate/http-loader
-
+## installer composer & installer firebase/php_jwt
 

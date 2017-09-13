@@ -8,9 +8,9 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
 header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Allow-Credentials: true");
-//header('Content-Type: application/json');
+header('Content-Type: application/json');
 
-$key = "example_key";
+$key = "my_application_key";
 $token = array(
     "iss" => "http://example.org",
     "aud" => "http://example.com",
@@ -42,10 +42,10 @@ $jwt = JWT::encode($token, $key);
 $decoded = JWT::decode($jwt, $key, array('HS256'));
 
 
-print_r($jwt);
+//print_r($jwt);
 
 // make it json format
-//print_r(json_encode($decoded));
+print_r(json_encode($decoded));
 
 
 /*
