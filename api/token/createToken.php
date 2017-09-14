@@ -1,7 +1,7 @@
 <?php
 
 // instantiate product object
-include_once '../objects/token.php';
+include_once '../objects/token.class.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
