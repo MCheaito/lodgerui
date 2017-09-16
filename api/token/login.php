@@ -1,14 +1,12 @@
 <?php
-
 require '../vendor/autoload.php';
-
 require_once '../objects/authenticate.class.php';
 require_once '../objects/token.class.php';
-
-// header("Access-Control-Allow-Origin: *");
-// header("Access-Control-Allow-Headers: access");
-// header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Methods: POST");
+ 
+ header("Access-Control-Allow-Origin: *");
+ header("Access-Control-Allow-Headers: access");
+ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+//header("Access-Control-Allow-Methods: POST");
 // header("Access-Control-Allow-Credentials: true");
 header("Content-type:application/json");
 

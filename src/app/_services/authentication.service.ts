@@ -39,8 +39,9 @@ constructor(  private http :Http ) {
 
 //      return this.http.post(config.apiUrl+'authentication/login', JSON.stringify({ username: username, password: password }))
       // return this.http.post(config.url+'authentication/login', body, { headers: headers })
-      return this.http.post(config.urlProd+'token/login.php', body, { headers: headers })
-          .map((response: Response) => {
+      // return this.http.post(config.urlProd+'token/login.php', body, { headers: headers })
+      return this.http.post(config.urlProd+'token/login.php', JSON.stringify({ username: username, password: password }))
+             .map((response: Response) => {
               // login successful if there's a jwt token in the response
               let token = response.json() ; //&& response.json().token;
               if (token) {
