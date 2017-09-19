@@ -5,9 +5,11 @@ require_once '../objects/token.class.php';
  
  header("Access-Control-Allow-Origin: *");
  header("Access-Control-Allow-Headers: access");
- header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-//header("Access-Control-Allow-Methods: POST");
-// header("Access-Control-Allow-Credentials: true");
+ header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization" );
+ header("Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS");
+ 
+ //header("Access-Control-Allow-Methods: POST");
+//header("Access-Control-Allow-Credentials: true");
 header("Content-type:application/json");
 
 /*
@@ -43,7 +45,7 @@ if ($s->isValid)
         "value" =>$token->getEncodedToken()
     ));
 
-    http_response_code(200);     
+    //http_response_code(200);     
 }
 else
 {
@@ -56,7 +58,7 @@ else
         "value" =>null
     )); 
 
-    http_response_code(401); 
+    //http_response_code(401); 
 }
 
  

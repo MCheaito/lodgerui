@@ -19,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthGuard } from './components/authentication/auth.guard';
-import { HttpService, BookingService,ShowMessageService} from  './_services';
+import { /*HttpService,*/ BookingService,ShowMessageService} from  './_services';
 import {BookingModule} from  './components/booking/booking.module';
 import { BookingActions } from './_redux/actions/booking-action';
 import { BookingEffects } from './_redux/effects/booking-effect';
@@ -61,8 +61,8 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         AuthGuard,
         BookingService,
         BookingActions,
-        ShowMessageService,
-        { provide: Http, useClass: HttpService }
+        ShowMessageService
+        // ,        { provide: Http, useClass: HttpService }
         
         /*{
             provide: HttpService ,
