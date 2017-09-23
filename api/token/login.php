@@ -6,8 +6,8 @@ require_once '../objects/token.class.php';
  header("Access-Control-Allow-Origin: *");
  header("Access-Control-Allow-Headers: access");
  header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization" );
- header("Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS");
- 
+ //header("Access-Control-Allow-Methods: GET,PUT,POST,DELETE,PATCH,OPTIONS");
+ header("Access-Control-Allow-Methods: GET,POST");
  //header("Access-Control-Allow-Methods: POST");
 //header("Access-Control-Allow-Credentials: true");
 header("Content-type:application/json");
@@ -21,13 +21,14 @@ header("Content-type:application/json");
 
  switch ($_SERVER['REQUEST_METHOD']) {
     case "POST":
-        $username  = $_POST['username'];
-        $password  = $_POST['password'];
+        $username  = isset($_POST['username']) ? $_POST['username'] : ''; 
+        $password  = isset($_POST['password']) ? $_POST['password'] : ''; 
         break;
     case "GET":
-        $username  = $_GET['username'];
-        $password  = $_GET['password'];
-    break;
+        $username  = isset($_GET['username']) ? $_GET['username'] : ''; 
+        $password  = isset($_GET['password']) ? $_GET['password'] : ''; 
+        break;
+
 }
 
 $s = new Authenticate($username,$password);
@@ -45,7 +46,7 @@ if ($s->isValid)
         "value" =>$token->getEncodedToken()
     ));
 
-    //http_response_code(200);     
+    http_response_code(200);     
 }
 else
 {
@@ -58,7 +59,7 @@ else
         "value" =>null
     )); 
 
-    //http_response_code(401); 
+    http_response_code(401); 
 }
 
  
