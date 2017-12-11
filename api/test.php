@@ -8,7 +8,7 @@ ini_set('display_errors', 1);
 
  $myservice  = new Service();
 
-$myArr = array("John", "Mary", "Peter", "Sally","test", $myservice->Get('dddd'));
+$myArr = array("John", "Mary", "Peter", "Sally","test", $myservice->result);
 
 $myJSON = json_encode($myArr);
 
