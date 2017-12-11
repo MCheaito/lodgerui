@@ -85,3 +85,9 @@ npm install ng2-charts --save
 ## https://github.com/ngx-translate/http-loader
 ## installer composer & installer firebase/php_jwt
 
+### Visual studio short cut
+-- Formatting  : On Windows Shift + Alt + F
+
+
+
+
