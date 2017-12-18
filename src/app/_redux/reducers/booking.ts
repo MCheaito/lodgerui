@@ -27,15 +27,16 @@ const initialState: BookingState = {
 
 
 export default function (state = initialState, action: Action): BookingState {
-    switch (action.type) {
-        case BookingActions.RESET_BLANK_BOOKING: {
-            return initialState;
-        }
-        case BookingActions.GET_BOOKING_SUCCESS: {
-            return action.payload;
-        }
-        default: {
-            return state;
-        }
-    }
+    // switch (action.type) {
+    //     case BookingActions.RESET_BLANK_BOOKING: {
+    //         return initialState;
+    //     }
+    //     case BookingActions.GET_BOOKING_SUCCESS: {
+    //         return action.payload;
+    //     }
+    //     default: {
+    //         return state;
+    //     }
+    // }
+    return state;
 }

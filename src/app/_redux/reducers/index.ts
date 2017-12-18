@@ -1,4 +1,4 @@
-import '@ngrx/core/add/operator/select';
+//import '@ngrx/core/add/operator/select';
 import {compose} from '@ngrx/core/compose';
 import {combineReducers} from '@ngrx/store';
 

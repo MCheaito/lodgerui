@@ -6,10 +6,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule,ActionReducer,MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { RouterStoreModule } from "@ngrx/router-store";
+//import { RouterStoreModule } from "@ngrx/router-store";
 import { DBModule } from '@ngrx/db';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -27,11 +26,27 @@ import reducer from './_redux/reducers';
 import { ShowMessageComponent } from './components/show-message/show-message.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import {reducers,CustomSerializer} from './store';  //Pour importer le Custom Router Serializer  (importer  customSerializer)
+import {StoreRouterConnectingModule, RouterStateSerializer} from '@ngrx/router-store'; //Pour importer le Custom Router Serializer
+
+// not used in production
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { storeFreeze } from 'ngrx-store-freeze';
+
+// this would be done dynamically with webpack for builds
+const environment = {
+    development: true,
+    production: false,
+  };
+  
+  export const metaReducers: MetaReducer<any>[] = !environment.production
+    ? [storeFreeze]
+    : [];
+
 /*
 export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
   return  new HttpService(backend, defaultOptions);
 }*/
-
 
 @NgModule({
     declarations: [
@@ -50,14 +65,16 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
         HttpModule,
         BookingModule,
         BrowserAnimationsModule,
-        EffectsModule.run(BookingEffects),
-        StoreModule.provideStore(reducer),
-        StoreDevtoolsModule.instrumentOnlyWithExtension({
-      maxAge: 5
-    }),
+//        EffectsModule.run(BookingEffects),
+//        StoreModule.provideStore(reducer),
+        StoreModule.forRoot(reducers,{metaReducers}),
+        EffectsModule.forRoot([]),
+        StoreRouterConnectingModule, //Pour importer le Custom Router Serializer        
+        environment.development ? StoreDevtoolsModule.instrument() : [],
     AppRoutingModule
     ],
     providers: [
+        { provide: RouterStateSerializer, useClass :CustomSerializer},
         AuthGuard,
         BookingService,
         BookingActions,

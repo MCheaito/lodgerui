@@ -27,11 +27,11 @@ export class BookingsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.store.dispatch(this.bookingActions.loadBookings());
+        //this.store.dispatch(this.bookingActions.loadBookings());
     }
 
     delete(booking:Booking) {
-        this.store.dispatch(this.bookingActions.deleteBooking(booking));
+       // this.store.dispatch(this.bookingActions.deleteBooking(booking));
     }
 
      select(booking) {

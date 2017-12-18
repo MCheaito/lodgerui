@@ -88,6 +88,26 @@ npm install ng2-charts --save
 ### Visual studio short cut
 -- Formatting  : On Windows Shift + Alt + F
 
+NGRX/ROUTERS
+------------
+0. installer @ngrx 4 et plus
+1. Créer les repertoires  "store"  dans src\app
+2. Créer store\reducers
+3. Créer index.ts dans store\reducers 
+4. Créer index.ts dans store
+5. Ajouter le code suivant dans app.module.ts
+    import { StoreModule, ActionReducer } from '@ngrx/store';  // ActionReducer  pour avoir acces sur StoreModule.forRoot
+    @NgModule({ ... 
+    storeModule.forRoot({},{metaReducers}),
+    ... })
+6. Dans Reducers/index.ts : 
+    - exporter les stat 
+    - exporter reducers
+7. dans app.Module.ts
+    . importe {reducers} from './store'
+    . storeModule.forRoot({reducers}) 
+
+
 
 
 
