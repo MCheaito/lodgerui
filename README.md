@@ -88,6 +88,13 @@ npm install ng2-charts --save
 ### Visual studio short cut
 -- Formatting  : On Windows Shift + Alt + F
 
+GIT
+-----------
+## Pour effacer un fichier de repository sans l'effacer locale
+git rm --cached mylogfile.log
+## pour effacer un folder
+git rm --cached -r mydirectory
+
 NGRX/ROUTERS
 ------------
 0. installer @ngrx 4 et plus
