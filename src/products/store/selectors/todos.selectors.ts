@@ -1,9 +1,8 @@
 import { createSelector } from '@ngrx/store';
 
-import * as fromRoot from '../../../app/store';
+import * as fromRoot from '../../../app/store'; // store de l'application
 import * as fromFeature from '../reducers';
 import * as fromTodos from '../reducers/todos.reducer';
-
 import {Todo} from '../../models/todo.model';
 
 
@@ -17,8 +16,7 @@ export const getTodosEntities = createSelector(
     getTodoState, 
     fromTodos.getTodosEntities
 )
-
-
+//Parmis toutes les entities retourn l'entité (todo) ayant le Id qu on a dans RouterState
 export const getSelectedTodo = createSelector(
     getTodosEntities,
     fromRoot.getRouterState,

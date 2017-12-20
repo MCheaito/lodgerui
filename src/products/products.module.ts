@@ -26,11 +26,11 @@ export const ROUTES: Routes = [
   },
   {
     path: ':todoId',
-    //component: fromContainers.ProductItemComponent,
+    component: fromContainers.TodoItemComponent,
   },
   {
     path: 'new',
-    //component: fromContainers.ProductItemComponent,
+    component: fromContainers.TodoItemComponent,
   },
 ];
 
