@@ -12,17 +12,17 @@ import { Todo } from '../../models/todo.model';
     <div class="todos">
       <div class="todos__new">
         <a
-          class="btn btn__ok" 
+          class="btn btn-primary" 
           routerLink="./new">
           New Todo
         </a>
       </div>
-      <div class="todos__list">
+      <div class="container">
         <div *ngIf="!((todos$ | async)?.length)">
           No todos, add one to get started.
         </div>
         <div *ngFor="let todo of (todos$ | async)">
-            {{todo.id}} - {{todo.description}}
+            <div class="form-group"><label>{{todo.id}}</label> <label>{{todo.description}}</label></div>
         </div>
       </div>
     </div>
