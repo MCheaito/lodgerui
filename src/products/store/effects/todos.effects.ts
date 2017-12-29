@@ -29,5 +29,18 @@ export class TodosEffects {
       })
     );
 
+    @Effect()
+    updateTodo$ = this.actions$.ofType(todoActions.UPDATE_TODO).pipe(
+      map((action: todoActions.UpdateTodo) => action.payload),
+      switchMap(todo => {
+        return this.todoService
+          .updateTodo(todo)
+          .pipe(
+            map(pizza => new todoActions.UpdateTodoSuccess(todo)),
+            catchError(error => of(new todoActions.UpdateTodoFail(error)))
+          );
+      })
+    );
+
 
 }

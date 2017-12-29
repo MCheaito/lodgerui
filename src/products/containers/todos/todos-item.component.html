@@ -1,0 +1,19 @@
+<div class="container-fluid" (mouseenter)="mouseEnter('div a') " (mouseleave)="mouseLeave('div A')">
+    <div class="row" *ngIf="isModeView">
+        <label>
+            <input type="checkbox" value="{{todo.id}}" [checked]="isDone" (change)="onChecked($event)" />{{todo.description}}
+        </label>
+        <a *ngIf="hasFocus" (click)="toggleModeEdit()">
+            <i class="fa fa-pencil-square-o  pull-right" aria-hidden="false"></i>
+        </a>
+        <a *ngIf="hasFocus" (click)="remove()">
+            <i class="fa fa-trash-o pull-right" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="row" *ngIf="isModeEdit">
+        <h1>EDIT FORM </h1>
+    </div>
+    <div class="row" *ngIf="isModeAdd">
+        <todo-form></todo-form>
+    </div>
+</div>

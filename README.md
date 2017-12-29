@@ -116,5 +116,11 @@ NGRX/ROUTERS
 
 
 
+####
+Json-server
+https://www.npmjs.com/package/json-server
+json-server --watch db.json --port 3004
+
+
 
 

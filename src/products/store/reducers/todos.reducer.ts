@@ -8,7 +8,6 @@ export interface TodoState {
     loading: boolean;
   }
 
-
   export const initialState: TodoState ={
       entities:{}, 
       loaded:false,

@@ -1,0 +1,60 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "todos": [
+    {
+      "id": 1,
+      "description": "Remove React PropTypes by using Flow Annotations (in CRA)",
+      "category": "Cat1",
+      "subCategory": "sub1",
+      "assignedTo": "M cheaito",
+      "createdBy": "M cheaito",
+      "createdOn": "2017-05-01",
+      "dueBy": "2018-01-01",
+      "prior": 1,
+      "done": false,
+      "remarks": "string"
+    },
+    {
+      "id": 2,
+      "description": "Fill out insurance form, and send it to tha company",
+      "category": "Cat1",
+      "subCategory": "sub1",
+      "assignedTo": "M cheaito",
+      "createdBy": "M cheaito",
+      "createdOn": "2017-05-01",
+      "dueBy": "2018-01-01",
+      "prior": 1,
+      "done": true,
+      "remarks": "string"
+    },
+    {
+      "id": 3,
+      "description": "Buy ticket to  ",
+      "category": "Cat1",
+      "subCategory": "sub1",
+      "assignedTo": "M cheaito",
+      "createdBy": "M cheaito",
+      "createdOn": "2017-05-01",
+      "dueBy": "2018-01-01",
+      "prior": 1,
+      "done": true,
+      "remarks": "string"
+    }
+  ]
+}

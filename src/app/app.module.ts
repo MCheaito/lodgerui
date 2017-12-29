@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 //import { RouterStoreModule } from "@ngrx/router-store";
-import { DBModule } from '@ngrx/db';
+// import { DBModule } from '@ngrx/db';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -54,14 +54,14 @@ export const ROUTES: Routes = [
     {
         path: 'products',
         loadChildren: '../products/products.module#ProductsModule',
-
-    },
-    { path: 'home', component: HomeComponent },
-    { path: 'login', component: AuthenticationComponent },
-    { path: 'logout', component: AuthenticationComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'booking', loadChildren: './components/booking/booking.module#BookingModule' },
-    { path: '**', component: PageNotFoundComponent }
+    }
+    // ,
+    // { path: 'home', component: HomeComponent },
+    // { path: 'login', component: AuthenticationComponent },
+    // { path: 'logout', component: AuthenticationComponent },
+    // { path: 'dashboard', component: DashboardComponent },
+    // { path: 'booking', loadChildren: './components/booking/booking.module#BookingModule' },
+    // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

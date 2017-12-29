@@ -1,21 +1,30 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+     Component, 
+     Input, 
+     Output,
+     OnInit, 
+     ChangeDetectionStrategy, 
+     EventEmitter 
+    } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormArray,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 import { Store } from '@ngrx/store';
+
 import { Observable } from 'rxjs/Observable';
-
 import { tap } from 'rxjs/operators';
-import * as fromStore from '../../store';
 
+import * as fromStore from '../../store';
 import { Todo } from '../../models/todo.model';
 
 @Component({
   selector: 'todo-item',
-  //styleUrls: ['todo-item.component.scss'],
-  template: `
-        <div>this is the selected todo</div>
-        <div class="container">{{current}}</div>
-
-  `,
+  templateUrl: 'todos-item.component.html',
 })
 // <todo-form
 // [todo]="todo$ | async"
@@ -26,39 +35,59 @@ import { Todo } from '../../models/todo.model';
 // </todo-form>
 
 export class TodoItemComponent implements OnInit {
-  todo$: Observable<Todo>;
-  current:Todo;
 
-  constructor(private store: Store<fromStore.ProductsState>) {}
+  @Input() todo: Todo;
+  @Input() mode: string;
 
+  @Output() onChanged: EventEmitter<Todo> = new EventEmitter<Todo>();
+
+  public isDone: boolean;
+  public hasFocus:boolean;
+
+  public isModeEdit:boolean;
+  public isModeView:boolean;
+  public isModeAdd:boolean;
+
+
+  constructor(private fb :FormBuilder) {
+  }
   ngOnInit() {
-    this.todo$ = this.store.select(fromStore.getSelectedTodo);
-    
-    let subscription = this.todo$.subscribe(
-        value => 
-        {
-            console.log("selected todo",value);
-            this.current=value;}
+
+    this.isDone = ((this.todo)? this.todo.done:false);
+    this.isModeEdit=false;
+    this.isModeView=(this.mode == "VIEW");
+    this.isModeAdd= (this.mode=="ADD")
+  }
+
+  mouseEnter(div: string) {
+    this.hasFocus = true && ! this.isModeAdd;
+  }
+
+  mouseLeave(div: string) {
+    this.hasFocus=false;
+  }
+
+  toggleModeEdit()
+  {
+    this.isModeEdit=! this.isModeEdit;
+  }
+
+  remove()
+  {
+    console.log('Remove');
+  }
+
+  onChecked(value) {
+
+    this.isDone = value.target.checked;
+    const done = this.isDone;
+
+    this.onChanged.emit(
+      {
+        ...this.todo,
+        done
+      }
     );
-
   }
 
-  onSelect(event: number[]) {
-    console.log("on select " + event);
-  }
-
-  onCreate(event: Todo) {
-    this.store.dispatch(new fromStore.CreateTodo(event));
-  }
-
-  onUpdate(event: Todo) {
-    this.store.dispatch(new fromStore.UpdateTodo(event));
-  }
-
-  onRemove(event: Todo) {
-    const remove = window.confirm('Are you sure?');
-    if (remove) {
-      this.store.dispatch(new fromStore.RemoveTodo(event));
-    }
-  }
 }

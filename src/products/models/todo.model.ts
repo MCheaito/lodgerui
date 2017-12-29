@@ -9,7 +9,6 @@ export class Todo
     createdOn:Date;
     dueBy:Date;
     prior:number; 
-    status:string;
-    statusOn:Date;
+    done:boolean;
     remarks:string;
 }

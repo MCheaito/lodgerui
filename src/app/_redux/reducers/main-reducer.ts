@@ -7,19 +7,19 @@ export const mainStoreReducer: ActionReducer<State> =
   console.log('Action came in! ' + action.type);
     switch (action.type) {
       case INCREMENT: {
-        console.log('Increment action being handled!');
+        // console.log('Increment action being handled!');
         return {
           counter: state.counter + 1
         }
       }
     case DECREMENT: {
-        console.log('Decrement action being handled!');
+        // console.log('Decrement action being handled!');
         return {
           counter: state.counter - 1
         }
       }
       case EVENT_FROM_EFFECT: {
-        console.log('we cheesin in the reducer over here!');
+        // console.log('we cheesin in the reducer over here!');
         return {
           counter: 4
         }
