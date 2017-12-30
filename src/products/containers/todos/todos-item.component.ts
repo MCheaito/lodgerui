@@ -15,10 +15,8 @@ import {
 } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
-
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
-
 import * as fromStore from '../../store';
 import { Todo } from '../../models/todo.model';
 
@@ -49,8 +47,11 @@ export class TodoItemComponent implements OnInit {
   public isModeAdd:boolean;
 
 
-  constructor(private fb :FormBuilder) {
-  }
+  constructor(
+    private fb :FormBuilder, 
+    private store: Store<fromStore.ProductsState>
+  ) {  }
+
   ngOnInit() {
 
     this.isDone = ((this.todo)? this.todo.done:false);
@@ -72,10 +73,19 @@ export class TodoItemComponent implements OnInit {
     this.isModeEdit=! this.isModeEdit;
   }
 
+  onCreate(event: Todo) {
+    this.store.dispatch(new fromStore.CreateTodo(event));
+  }
+
+  onUpdate(event: Todo) {
+    this.store.dispatch(new fromStore.UpdateTodo(event));
+  }
+
   remove()
   {
     console.log('Remove');
   }
+
 
   onChecked(value) {
 

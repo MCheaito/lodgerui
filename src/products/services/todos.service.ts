@@ -28,4 +28,12 @@ export class TodosService{
           .put<Todo>(`${PATH_API}/${payload.id}`, payload)
           .pipe(catchError((error: any) => Observable.throw(error.json())));
       }
+
+      
+    CreateTodo(payload: Todo): Observable<Todo> {
+    
+        return this.http
+          .post<Todo>(`${PATH_API}`, payload)
+          .pipe(catchError((error: any) => Observable.throw(error.json())));
+      }
 }

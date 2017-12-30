@@ -41,6 +41,18 @@ export class TodosEffects {
           );
       })
     );
+    @Effect()
+    createPizza$ = this.actions$.ofType(todoActions.CREATE_TODO).pipe(
+      map((action: todoActions.CreateTodo) => action.payload),
+      switchMap(todo => {
+        return this.todoService
+          .CreateTodo(todo)
+          .pipe(
+            map(todo => new todoActions.CreateTodoSuccess(todo)),
+            catchError(error => of(new todoActions.CreateTodoFail(error)))
+          );
+      })
+    );
 
 
 }

@@ -14,6 +14,10 @@
         <h1>EDIT FORM </h1>
     </div>
     <div class="row" *ngIf="isModeAdd">
-        <todo-form></todo-form>
+        <todo-form
+            [todo]="todo"
+            (create)="onCreate($event)"
+            (update)="onUpdate($event)"            
+        ></todo-form>
     </div>
 </div>
