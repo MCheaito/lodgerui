@@ -12,7 +12,10 @@ import { Todo } from '../../models/todo.model';
 <div class="container">
     <div class="panel  panel-default">
       <div class="panel panel-heading"> 
-        <h1><i class="fa fa-tasks pull-left" aria-hidden="true"></i> List of Todos</h1>
+
+        <i class="fa fa-tasks pull-left" aria-hidden="true"></i> 
+        <label>List of Todos</label>
+        <span class="badge pull-right">12</span>
       </div>
       <div class ="panel panel-body">
               <ul id="sortable" class="list-unstyled">
