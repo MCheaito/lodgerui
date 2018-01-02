@@ -1,4 +1,4 @@
-<div class="container-fluid" (mouseenter)="mouseEnter('div a') " (mouseleave)="mouseLeave('div A')">
+<div class="row" (mouseenter)="mouseEnter('div a') " (mouseleave)="mouseLeave('div A')">
     <div class="row" *ngIf="isModeView">
         <label>
             <input type="checkbox" value="{{todo.id}}" [checked]="isDone" (change)="onChecked($event)" />{{todo.description}}
@@ -10,10 +10,7 @@
             <i class="fa fa-trash-o pull-right" aria-hidden="true"></i>
         </a>
     </div>
-    <div class="row" *ngIf="isModeEdit">
-        <h1>EDIT FORM </h1>
-    </div>
-    <div class="row" *ngIf="isModeAdd">
+    <div class="row" *ngIf="isModeAdd || isModeEdit">
         <todo-form
             [todo]="todo"
             (create)="onCreate($event)"

@@ -9,7 +9,7 @@ import { Todo } from '../../models/todo.model';
   selector: 'todos',
   //styleUrls: ['products.component.scss'],
   template: `
-<div class="container">
+<div class="col-md-4">
     <div class="panel  panel-default">
       <div class="panel panel-heading"> 
 

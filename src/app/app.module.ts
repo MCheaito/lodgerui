@@ -1,10 +1,11 @@
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, Http, RequestOptions, XHRBackend } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -75,11 +76,13 @@ export const ROUTES: Routes = [
         HomeComponent, ShowMessageComponent, DashboardComponent, SidebarComponent
     ],
     imports: [
+        DynamicFormModule,
         BrowserModule,
         FormsModule,
         ChartsModule,
         HttpModule,
         BookingModule,
+        ReactiveFormsModule ,
         BrowserAnimationsModule,
         //        EffectsModule.run(BookingEffects),
         //        StoreModule.provideStore(reducer),
