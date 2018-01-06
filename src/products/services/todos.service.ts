@@ -9,7 +9,8 @@ import 'rxjs/add/observable/throw';
 
 import { Todo } from '../models/todo.model';
 
-const PATH_API: string = "http://localhost:3004/todos";
+import * as config from './config';
+
 
 @Injectable()
 
@@ -19,13 +20,13 @@ export class TodosService{
     loadAllTodos():Observable<Todo[]>
     {
         return this.http
-            .get<Todo[]>(PATH_API)
+            .get<Todo[]>(`${config.PATH_API}/todos`)
             .pipe(catchError((error: any) => Observable.throw(error.json())));
     }
 
     updateTodo(payload: Todo): Observable<Todo> {
         return this.http
-          .put<Todo>(`${PATH_API}/${payload.id}`, payload)
+          .put<Todo>(`${config.PATH_API}/todos/${payload.id}`, payload)
           .pipe(catchError((error: any) => Observable.throw(error.json())));
       }
 
@@ -33,7 +34,7 @@ export class TodosService{
     CreateTodo(payload: Todo): Observable<Todo> {
     
         return this.http
-          .post<Todo>(`${PATH_API}`, payload)
+          .post<Todo>(`${config.PATH_API}/todos`, payload)
           .pipe(catchError((error: any) => Observable.throw(error.json())));
       }
 }

@@ -1,4 +1,16 @@
 {
+  "categories" :[
+    {
+      "key":"1",
+      "value":"administration"
+    },
+    {
+      "key":"2",
+      "value":"planing"
+    }
+  ]
+  ,
+  
   "posts": [
     {
       "id": 1,

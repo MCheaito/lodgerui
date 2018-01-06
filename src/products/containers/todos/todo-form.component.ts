@@ -12,25 +12,19 @@ import {
 } from '@angular/core';
 
 import { Validators } from '@angular/forms';
-
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import * as fromStore from '../../store';
+import { KeyValue } from '../../../app/dynamic-form/models/key-value.model';
 import { FieldConfig } from '../../../app/dynamic-form/models/field-config.interface';
 import { DynamicFormComponent } from '../../../app/dynamic-form/containers/dynamic-form/dynamic-form.component';
-
-// import {
-//     FormControl,
-//     FormGroup,
-//     FormArray,
-//     FormBuilder,
-//     Validators,
-// } from '@angular/forms';
-
 import { Todo } from '../../models/todo.model';
 
 @Component({
     selector: 'todo-form',
 
     template: `
-    <div class="app">
+    <div class="form-group">
       <dynamic-form
         [config]="config"
         #form="dynamicForm"
@@ -44,23 +38,76 @@ import { Todo } from '../../models/todo.model';
 
 
 export class TodoFormComponent implements AfterViewInit {
+  
     @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
-    config: FieldConfig[] = [
+    private listOfCategories$ : Observable<KeyValue[]>;
+    private config: FieldConfig[] = [
         {
           type: 'input',
-          label: 'Full name',
-          name: 'name',
-          placeholder: 'Enter your name',
+          label: 'Description',
+          name: 'description',
+          placeholder: 'Enter your TODO description',
           validation: [Validators.required, Validators.minLength(4)]
         },
         {
           type: 'select',
-          label: 'Favourite Food',
-          name: 'food',
-          options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
+          label: 'Category',
+          name: 'category',
+          //options: this.listOfCategories$,
           placeholder: 'Select an option',
           validation: [Validators.required]
         },
+        {
+          type: 'input',
+          label: 'Sub Category',
+          name: 'subCategory',
+          placeholder: 'Select an option',
+          validation: [Validators.required]
+        },    
+        {
+          type: 'input',
+          label: 'Created by',
+          name: 'createdBy',
+          placeholder: 'Enter creator name',
+          validation: [Validators.required]
+        },
+        {
+          type: 'date',
+          label: 'Created on',
+          name: 'createdOn',
+          placeholder: 'yyyy-mm-dd',
+          validation: [Validators.required]
+        },
+        {
+          type: 'date',
+          label: 'Due by',
+          name: 'dueBy',
+          placeholder: 'yyyy-mm-dd',
+          validation: [Validators.required]
+        }, 
+        // {
+        //   type: 'select',
+        //   label: 'Priorty',
+        //   name: 'prior',
+        //   options: ['1', '2', '3', '4'],
+        //   placeholder: 'Select an option',
+        //   validation: [Validators.required]
+        // },
+        {
+          type: 'input',
+          label: 'checked',
+          name: 'done',
+          options: ['Yes', 'No'],
+          placeholder: '',
+          validation: [Validators.required]
+        }, 
+        {
+          type: 'textArea',
+          label: 'Remarks',
+          name: 'remarks',
+          placeholder: 'Enter the remarks',
+          validation: []
+        }, 
         {
           label: 'Submit',
           name: 'submit',
@@ -70,13 +117,17 @@ export class TodoFormComponent implements AfterViewInit {
 
 
 
-    exists = false;
+    private exists = false;
 
     @Input() todo: Todo;
 
     @Output() create: EventEmitter<Todo> = new EventEmitter<Todo>();
     @Output() update: EventEmitter<Todo> = new EventEmitter<Todo>();
 
+    constructor(private store: Store<fromStore.ProductsState>) {
+      this.listOfCategories$ = this.store.select(fromStore.getAllEnums);
+      this.store.dispatch(new fromStore.LoadEnums("categories"));
+     }
 
     ngAfterViewInit() {
         let previousValid = this.form.valid;
@@ -87,8 +138,8 @@ export class TodoFormComponent implements AfterViewInit {
           }
         });
     
-        this.form.setDisabled('submit', true);
-        this.form.setValue('name', 'Todd Motto');
+       // this.form.setDisabled('submit', true);
+      //  this.form.setValue('name', 'Todd Motto');
       }
       
       submit(value: {[name: string]: any}) {
