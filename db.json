@@ -1,16 +1,18 @@
 {
-  "categories" :[
+  "categories": [
     {
-      "key":"1",
-      "value":"administration"
+      "key": "1",
+      "value": "administration"
     },
     {
-      "key":"2",
-      "value":"planing"
+      "key": "2",
+      "value": "planning"
+    },
+    {
+      "key": "3",
+      "value": "Family"
     }
-  ]
-  ,
-  
+  ],
   "posts": [
     {
       "id": 1,

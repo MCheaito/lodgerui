@@ -40,8 +40,110 @@ import { Todo } from '../../models/todo.model';
 export class TodoFormComponent implements AfterViewInit {
   
     @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
-    private listOfCategories$ : Observable<KeyValue[]>;
-    private config: FieldConfig[] = [
+    private listOfCategories : KeyValue[]= [
+      {
+        key:'1',
+        value:'Administration'
+      },
+      {
+        key:'2',
+        value:'Employees'
+      },
+      {
+        key:'3',
+        value:'Planning'
+      }
+      
+      
+    ];
+    private config: FieldConfig[];
+    
+    // = [
+    //     {
+    //       type: 'input',
+    //       label: 'Description',
+    //       name: 'description',
+    //       placeholder: 'Enter your TODO description',
+    //       validation: [Validators.required, Validators.minLength(4)]
+    //     },
+    //     {
+    //       type: 'select',
+    //       label: 'Category',
+    //       name: 'category',
+    //       options: this.store.select(fromStore.getAllEnums),
+    //       placeholder: 'Select an option',
+    //       validation: [Validators.required]
+    //     },
+    //     {
+    //       type: 'input',
+    //       label: 'Sub Category',
+    //       name: 'subCategory',
+    //       placeholder: 'Select an option',
+    //       validation: [Validators.required]
+    //     },    
+    //     {
+    //       type: 'input',
+    //       label: 'Created by',
+    //       name: 'createdBy',
+    //       placeholder: 'Enter creator name',
+    //       validation: [Validators.required]
+    //     },
+    //     {
+    //       type: 'date',
+    //       label: 'Created on',
+    //       name: 'createdOn',
+    //       placeholder: 'yyyy-mm-dd',
+    //       validation: [Validators.required]
+    //     },
+    //     {
+    //       type: 'date',
+    //       label: 'Due by',
+    //       name: 'dueBy',
+    //       placeholder: 'yyyy-mm-dd',
+    //       validation: [Validators.required]
+    //     }, 
+    //     // {
+    //     //   type: 'select',
+    //     //   label: 'Priorty',
+    //     //   name: 'prior',
+    //     //   options: ['1', '2', '3', '4'],
+    //     //   placeholder: 'Select an option',
+    //     //   validation: [Validators.required]
+    //     // },
+    //     {
+    //       type: 'input',
+    //       label: 'checked',
+    //       name: 'done',
+    //       //options: ['Yes', 'No'],
+    //       placeholder: '',
+    //       validation: [Validators.required]
+    //     }, 
+    //     {
+    //       type: 'textArea',
+    //       label: 'Remarks',
+    //       name: 'remarks',
+    //       placeholder: 'Enter the remarks',
+    //       validation: []
+    //     }, 
+    //     {
+    //       label: 'Submit',
+    //       name: 'submit',
+    //       type: 'button'
+    //     }
+    //   ];
+
+
+
+    private exists = false;
+
+    @Input() todo: Todo;
+
+    @Output() create: EventEmitter<Todo> = new EventEmitter<Todo>();
+    @Output() update: EventEmitter<Todo> = new EventEmitter<Todo>();
+
+    constructor(private store: Store<fromStore.ProductsState>) {
+
+      this.config  = [
         {
           type: 'input',
           label: 'Description',
@@ -53,7 +155,7 @@ export class TodoFormComponent implements AfterViewInit {
           type: 'select',
           label: 'Category',
           name: 'category',
-          //options: this.listOfCategories$,
+          options: this.store.select(fromStore.getAllEnums),
           placeholder: 'Select an option',
           validation: [Validators.required]
         },
@@ -97,7 +199,7 @@ export class TodoFormComponent implements AfterViewInit {
           type: 'input',
           label: 'checked',
           name: 'done',
-          options: ['Yes', 'No'],
+          //options: ['Yes', 'No'],
           placeholder: '',
           validation: [Validators.required]
         }, 
@@ -117,20 +219,13 @@ export class TodoFormComponent implements AfterViewInit {
 
 
 
-    private exists = false;
-
-    @Input() todo: Todo;
-
-    @Output() create: EventEmitter<Todo> = new EventEmitter<Todo>();
-    @Output() update: EventEmitter<Todo> = new EventEmitter<Todo>();
-
-    constructor(private store: Store<fromStore.ProductsState>) {
-      this.listOfCategories$ = this.store.select(fromStore.getAllEnums);
+//      this.listOfCategories$ = this.store.select(fromStore.getAllEnums);
       this.store.dispatch(new fromStore.LoadEnums("categories"));
      }
 
     ngAfterViewInit() {
         let previousValid = this.form.valid;
+
         this.form.changes.subscribe(() => {
           if (this.form.valid !== previousValid) {
             previousValid = this.form.valid;
