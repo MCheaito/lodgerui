@@ -35,97 +35,10 @@ import { Todo } from "../../models/todo.model";
     </div>
   `
 })
-export class TodoFormComponent implements AfterViewInit {
+export class TodoFormComponent implements AfterViewInit, OnInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
-  private listOfCategories: KeyValue[] = [
-    {
-      key: "1",
-      value: "Administration"
-    },
-    {
-      key: "2",
-      value: "Employees"
-    },
-    {
-      key: "3",
-      value: "Planning"
-    }
-  ];
-  private config: FieldConfig[];
 
-  // = [
-  //     {
-  //       type: 'input',
-  //       label: 'Description',
-  //       name: 'description',
-  //       placeholder: 'Enter your TODO description',
-  //       validation: [Validators.required, Validators.minLength(4)]
-  //     },
-  //     {
-  //       type: 'select',
-  //       label: 'Category',
-  //       name: 'category',
-  //       options: this.store.select(fromStore.getAllEnums),
-  //       placeholder: 'Select an option',
-  //       validation: [Validators.required]
-  //     },
-  //     {
-  //       type: 'input',
-  //       label: 'Sub Category',
-  //       name: 'subCategory',
-  //       placeholder: 'Select an option',
-  //       validation: [Validators.required]
-  //     },
-  //     {
-  //       type: 'input',
-  //       label: 'Created by',
-  //       name: 'createdBy',
-  //       placeholder: 'Enter creator name',
-  //       validation: [Validators.required]
-  //     },
-  //     {
-  //       type: 'date',
-  //       label: 'Created on',
-  //       name: 'createdOn',
-  //       placeholder: 'yyyy-mm-dd',
-  //       validation: [Validators.required]
-  //     },
-  //     {
-  //       type: 'date',
-  //       label: 'Due by',
-  //       name: 'dueBy',
-  //       placeholder: 'yyyy-mm-dd',
-  //       validation: [Validators.required]
-  //     },
-  //     // {
-  //     //   type: 'select',
-  //     //   label: 'Priorty',
-  //     //   name: 'prior',
-  //     //   options: ['1', '2', '3', '4'],
-  //     //   placeholder: 'Select an option',
-  //     //   validation: [Validators.required]
-  //     // },
-  //     {
-  //       type: 'input',
-  //       label: 'checked',
-  //       name: 'done',
-  //       //options: ['Yes', 'No'],
-  //       placeholder: '',
-  //       validation: [Validators.required]
-  //     },
-  //     {
-  //       type: 'textArea',
-  //       label: 'Remarks',
-  //       name: 'remarks',
-  //       placeholder: 'Enter the remarks',
-  //       validation: []
-  //     },
-  //     {
-  //       label: 'Submit',
-  //       name: 'submit',
-  //       type: 'button'
-  //     }
-  //   ];
+  private config: FieldConfig[];
 
   private exists = false;
 
@@ -135,8 +48,28 @@ export class TodoFormComponent implements AfterViewInit {
   @Output() update: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   private listOfCategories$: Observable<KeyValue[]>;
+  public listOfYN$: Observable<KeyValue[]>;
+  public displayedDataList$: Observable<KeyValue[]>;
+  constructor(private store: Store<fromStore.ProductsState>) { }
 
-  constructor(private store: Store<fromStore.ProductsState>) {
+  ngOnInit() {
+
+    this.listOfCategories$ = this.store.select(fromStore.getCategoriesEnums);
+    //     this.store.select(fromStore.getClientTypesEnums)
+    this.displayedDataList$ = Observable.of(
+      [
+          { key: "Number of Students", value:" 0" },
+          { key: "Success Rate", value: "0" }
+      ]
+  );
+
+    //  this.listOfYN$ = 
+    //  Observable.of([]);
+      //  [
+      //    { key: 'Y', value: 'yes' },
+      //    { key: 'N', value: 'No' }
+      //  ]);
+
     this.config = [
       {
         type: "input",
@@ -190,10 +123,10 @@ export class TodoFormComponent implements AfterViewInit {
       //   validation: [Validators.required]
       // },
       {
-        type: "input",
+        type: "select",
         label: "checked",
         name: "done",
-        //options: ['Yes', 'No'],
+        options$: this.listOfYN$,
         placeholder: "",
         validation: [Validators.required]
       },
@@ -211,18 +144,10 @@ export class TodoFormComponent implements AfterViewInit {
       }
     ];
 
-    //      this.listOfCategories$ = this.store.select(fromStore.getAllEnums);
-    //this.store.dispatch(new fromStore.LoadEnums("categories"));
-
     this.store.dispatch(new fromStore.LoadEnums());
-
-    this.listOfCategories$= this.store.select(fromStore.getCategoriesEnums);
-
   }
 
   ngAfterViewInit() {
-
-
     let previousValid = this.form.valid;
 
     this.form.changes.subscribe(() => {
@@ -231,6 +156,11 @@ export class TodoFormComponent implements AfterViewInit {
         this.form.setDisabled("submit", !previousValid);
       }
     });
+
+    this.listOfCategories$.subscribe(e => {
+      console.log("this.listOfCategories$.subscribe", e);
+    }
+    );
 
     // this.form.setDisabled('submit', true);
     //  this.form.setValue('name', 'Todd Motto');

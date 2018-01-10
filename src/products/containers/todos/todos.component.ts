@@ -9,7 +9,6 @@ import { Todo } from '../../models/todo.model';
   selector: 'todos',
   //styleUrls: ['products.component.scss'],
   template: `
-<div class="col-md-4">
     <div class="panel  panel-default">
       <div class="panel panel-heading"> 
 
@@ -37,7 +36,6 @@ import { Todo } from '../../models/todo.model';
       </div>  
       <div class="panel panel-footer"></div>
       </div>  
-  </div>  
       `
 })
 export class TodosComponent implements OnInit {

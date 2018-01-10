@@ -30,7 +30,9 @@ export class EnumsEffects {
     // );
 
     @Effect()
-    loadTodos$ = this.actions$.ofType(enumActions.LOAD_ENUM).pipe(
+    loadTodos$ = this.actions$.ofType(enumActions.LOAD_ENUM)
+//    .startWith(new enumActions.LoadEnums() )
+    .pipe(
       switchMap(() => {
         return this.enumService
           .loadEnums()

@@ -1,4 +1,4 @@
-<div class="row" (mouseenter)="mouseEnter('div a') " (mouseleave)="mouseLeave('div A')">
+<div class="row col-md-12" (mouseenter)="mouseEnter('div a') " (mouseleave)="mouseLeave('div A')">
     <div class="row" *ngIf="isModeView">
         <label>
             <input type="checkbox" value="{{todo.id}}" [checked]="isDone" (change)="onChecked($event)" />{{todo.description}}

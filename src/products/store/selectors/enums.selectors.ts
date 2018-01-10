@@ -23,17 +23,9 @@ export const getEnumsEntities = createSelector(
   });
   
   
-  export const getCategoriesEnums  = createSelector( getAllEnums,(items :Enums[])=>
-    {
-      return items
-             .filter( (element:Enums) => element.name ==="categories" )[0].list;
-             
-            
-            
-
-
-    }
-  );
+  export const getCategoriesEnums  = createSelector( getEnumsState,fromEnums.getEnumslistOfCategories);
+  export const getClientTypesEnums  = createSelector( getEnumsState,fromEnums.getEnumslistOfClientTypes);
+  
   export const getEnumsLoaded = createSelector(
     getEnumsState,
     fromEnums.getEnumsLoaded

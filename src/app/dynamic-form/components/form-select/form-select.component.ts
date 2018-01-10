@@ -15,7 +15,7 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
       <label>{{ config.label }}</label>
       <select [formControlName]="config.name"   (change)="onChange($event)">
         <option value="">{{ config.placeholder }}</option>
-        <option *ngFor="let option of (config.options | async)  " [ngValue]="option.key">{{option.value}}</option>        
+        <option *ngFor="let option of (config.options$ | async)" [ngValue]="option.key">{{option.value}}</option>        
       </select>
     </div>
   `
@@ -28,9 +28,8 @@ export class FormSelectComponent implements Field {
   group: FormGroup;
 
 
-onChange(event:any)
- {
-   console.log("select ... config ... ", this.config);
- }
+  onChange(event: any) {
+    console.log("select ... config ... ", this.config);
+  }
 
 }
