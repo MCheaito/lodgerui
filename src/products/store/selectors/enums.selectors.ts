@@ -22,10 +22,15 @@ export const getEnumsEntities = createSelector(
     return Object.keys(entities).map(id => entities[parseInt(id, 10)]);
   });
   
-
-  export const getCategoriesEnums  = createSelector( getAllEnums,(allenums :Enums[])=>
+  
+  export const getCategoriesEnums  = createSelector( getAllEnums,(items :Enums[])=>
     {
-      return allenums.filter((enum) =
+      return items
+             .filter( (element:Enums) => element.name ==="categories" )[0].list;
+             
+            
+            
+
 
     }
   );

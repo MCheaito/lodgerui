@@ -134,6 +134,8 @@ export class TodoFormComponent implements AfterViewInit {
   @Output() create: EventEmitter<Todo> = new EventEmitter<Todo>();
   @Output() update: EventEmitter<Todo> = new EventEmitter<Todo>();
 
+  private listOfCategories$: Observable<KeyValue[]>;
+
   constructor(private store: Store<fromStore.ProductsState>) {
     this.config = [
       {
@@ -147,7 +149,7 @@ export class TodoFormComponent implements AfterViewInit {
         type: "select",
         label: "Category",
         name: "category",
-        options$: this.store.select(fromStore.getAllEnums),
+        options$: this.listOfCategories$,
         placeholder: "Select an option",
         validation: [Validators.required]
       },
@@ -211,10 +213,16 @@ export class TodoFormComponent implements AfterViewInit {
 
     //      this.listOfCategories$ = this.store.select(fromStore.getAllEnums);
     //this.store.dispatch(new fromStore.LoadEnums("categories"));
+
     this.store.dispatch(new fromStore.LoadEnums());
+
+    this.listOfCategories$= this.store.select(fromStore.getCategoriesEnums);
+
   }
 
   ngAfterViewInit() {
+
+
     let previousValid = this.form.valid;
 
     this.form.changes.subscribe(() => {
