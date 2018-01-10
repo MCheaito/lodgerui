@@ -6,7 +6,7 @@ export interface FieldConfig {
   disabled?: boolean;
   label?: string;
   name: string;
-  options?: Observable<any>;
+  options$?: Observable<any>;
   placeholder?: string;
   type: string;
   validation?: ValidatorFn[];

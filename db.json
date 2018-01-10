@@ -1,16 +1,38 @@
 {
-  "categories": [
+  "enums": [
     {
-      "key": "1",
-      "value": "administration"
+      "name": "categories",
+      "list": [
+        {
+          "key": "1",
+          "value": "administration"
+        },
+        {
+          "key": "2",
+          "value": "planning"
+        },
+        {
+          "key": "3",
+          "value": "Family"
+        }
+      ]
     },
     {
-      "key": "2",
-      "value": "planning"
-    },
-    {
-      "key": "3",
-      "value": "Family"
+      "name": "clientTypes",
+      "list": [
+        {
+          "key": "0",
+          "value": "Company"
+        },
+        {
+          "key": "1",
+          "value": "individual"
+        },
+        {
+          "key": "2",
+          "value": "Family"
+        }
+      ]
     }
   ],
   "posts": [
@@ -33,7 +55,8 @@
   "todos": [
     {
       "id": 1,
-      "description": "Remove React PropTypes by using Flow Annotations (in CRA)",
+      "description":
+        "Remove React PropTypes by using Flow Annotations (in CRA)",
       "category": "Cat1",
       "subCategory": "sub1",
       "assignedTo": "M cheaito",

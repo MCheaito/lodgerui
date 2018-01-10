@@ -3,7 +3,7 @@ import { createSelector } from '@ngrx/store';
 import * as fromRoot from '../../../app/store'; // store de l'application
 import * as fromFeature from '../reducers';
 import * as fromEnums from '../reducers/enum.reducer';
-import { KeyValue } from '../../../app/dynamic-form/models/key-value.model';
+import { KeyValue,Enums } from '../../../app/dynamic-form/models';
 
 
 export const getEnumsState = createSelector(
@@ -22,6 +22,13 @@ export const getEnumsEntities = createSelector(
     return Object.keys(entities).map(id => entities[parseInt(id, 10)]);
   });
   
+
+  export const getCategoriesEnums  = createSelector( getAllEnums,(allenums :Enums[])=>
+    {
+      return allenums.filter((enum) =
+
+    }
+  );
   export const getEnumsLoaded = createSelector(
     getEnumsState,
     fromEnums.getEnumsLoaded

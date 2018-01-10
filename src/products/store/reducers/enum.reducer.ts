@@ -1,9 +1,9 @@
 import * as fromEnum from "../actions/enum.actions";
-import { KeyValue } from '../../../app/dynamic-form/models/key-value.model';
+import { Enums } from '../../../app/dynamic-form/models';
 
 //State
 export interface EnumState {
-  entities: { [id: number]: KeyValue };
+  entities: { [id: number]: Enums };
   loaded: boolean;
   loading: boolean;
 }
@@ -30,10 +30,10 @@ export function reducer(
     case fromEnum.LOAD_ENUM_SUCCESS: {
       const enums = action.payload;
       const entities = enums.reduce(
-        (entities: { [id: number]: KeyValue }, enums: KeyValue) => {
+        (entities: { [id: number]: Enums }, enums: Enums) => {
           return {
             ...entities,
-            [enums.key]: enums
+            [enums.name]: enums
           };
         },
         {
