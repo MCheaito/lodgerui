@@ -25,6 +25,8 @@ export const getEnumsEntities = createSelector(
   
   export const getCategoriesEnums  = createSelector( getEnumsState,fromEnums.getEnumslistOfCategories);
   export const getClientTypesEnums  = createSelector( getEnumsState,fromEnums.getEnumslistOfClientTypes);
+  export const getPriorityEnums  = createSelector( getEnumsState,fromEnums.getEnumslistOfPriority);
+  export const getSeverityEnums  = createSelector( getEnumsState,fromEnums.getEnumslistOfSeverity);
   
   export const getEnumsLoaded = createSelector(
     getEnumsState,

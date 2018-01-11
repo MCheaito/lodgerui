@@ -60,6 +60,8 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
 
   private listOfCategories$: Observable<KeyValue[]>;
   public listOfYN$: Observable<KeyValue[]>;
+  public listOfSeverity$: Observable<KeyValue[]>;
+  public listOfPriorty$: Observable<KeyValue[]>;
   public displayedDataList$: Observable<KeyValue[]>;
 
   constructor(
@@ -75,7 +77,8 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
     this.isModeAdd = (this.mode == "ADD")
 
     this.listOfCategories$ = this.store.select(fromStore.getCategoriesEnums);
-
+    this.listOfSeverity$ = this.store.select(fromStore.getSeverityEnums);
+    this.listOfPriorty$ = this.store.select(fromStore.getPriorityEnums);
     this.listOfYN$ =
       Observable.of(
         [
@@ -127,14 +130,22 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         placeholder: "yyyy-mm-dd",
         validation: [Validators.required]
       },
-      // {
-      //   type: 'select',
-      //   label: 'Priorty',
-      //   name: 'prior',
-      //   options: ['1', '2', '3', '4'],
-      //   placeholder: 'Select an option',
-      //   validation: [Validators.required]
-      // },
+      {
+        type: 'select',
+        label: 'Severity',
+        name: 'severity',
+        options$: this.listOfSeverity$,
+        placeholder: 'Select severity',
+        validation: [Validators.required]
+      },
+      {
+        type: 'select',
+        label: 'Priorty',
+        name: 'prior',
+        options$: this.listOfPriorty$,
+        placeholder: 'Select an option',
+        validation: [Validators.required]
+      },
       {
         type: "select",
         label: "checked",
@@ -156,8 +167,6 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: "button"
       }
     ];
-
-    //this.store.dispatch(new fromStore.LoadEnums());
   }
 
   ngAfterViewInit() {
