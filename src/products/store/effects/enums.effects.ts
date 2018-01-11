@@ -6,7 +6,7 @@ import * as fromRoot from '../../../app/store';
 import * as enumActions from '../actions/enum.actions';
 import * as fromServices from '../../services';
 import { EnumsAction } from 'products/store';
-
+import 'rxjs/add/operator/startWith';
 
 @Injectable()
 
@@ -31,7 +31,7 @@ export class EnumsEffects {
 
     @Effect()
     loadTodos$ = this.actions$.ofType(enumActions.LOAD_ENUM)
-//    .startWith(new enumActions.LoadEnums() )
+    .startWith(new enumActions.LoadEnums())
     .pipe(
       switchMap(() => {
         return this.enumService

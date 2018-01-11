@@ -1,11 +1,15 @@
 import {
-     Component, 
-     Input, 
-     Output,
-     OnInit, 
-     ChangeDetectionStrategy, 
-     EventEmitter 
-    } from '@angular/core';
+  Component,
+  Input,
+  Output,
+  OnInit,
+  ChangeDetectionStrategy,
+  EventEmitter,
+  OnChanges,
+  ViewChild,
+  SimpleChanges,
+  AfterViewInit
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -19,6 +23,10 @@ import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
 import * as fromStore from '../../store';
 import { Todo } from '../../models/todo.model';
+import 'rxjs/add/observable/of';
+import { KeyValue } from "../../../app/dynamic-form/models/key-value.model";
+import { FieldConfig } from "../../../app/dynamic-form/models/field-config.interface";
+import { DynamicFormComponent } from "../../../app/dynamic-form/containers/dynamic-form/dynamic-form.component";
 
 @Component({
   selector: 'todo-item',
@@ -32,7 +40,11 @@ import { Todo } from '../../models/todo.model';
 // (remove)="onRemove($event)">
 // </todo-form>
 
-export class TodoItemComponent implements OnInit {
+export class TodoItemComponent implements AfterViewInit, OnInit {
+  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+
+  private config: FieldConfig[];
+  private exists = false;
 
   @Input() todo: Todo;
   @Input() mode: string;
@@ -40,37 +52,147 @@ export class TodoItemComponent implements OnInit {
   @Output() onChanged: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   public isDone: boolean;
-  public hasFocus:boolean;
+  public hasFocus: boolean;
 
-  public isModeEdit:boolean;
-  public isModeView:boolean;
-  public isModeAdd:boolean;
+  public isModeEdit: boolean;
+  public isModeView: boolean;
+  public isModeAdd: boolean;
 
+  private listOfCategories$: Observable<KeyValue[]>;
+  public listOfYN$: Observable<KeyValue[]>;
+  public displayedDataList$: Observable<KeyValue[]>;
 
   constructor(
-    private fb :FormBuilder, 
+    private fb: FormBuilder,
     private store: Store<fromStore.ProductsState>
-  ) {  }
+  ) { }
 
   ngOnInit() {
 
-    this.isDone = ((this.todo)? this.todo.done:false);
-    this.isModeEdit=false;
-    this.isModeView=(this.mode == "VIEW");
-    this.isModeAdd= (this.mode=="ADD")
+    this.isDone = ((this.todo) ? this.todo.done : false);
+    this.isModeEdit = false;
+    this.isModeView = (this.mode == "VIEW");
+    this.isModeAdd = (this.mode == "ADD")
+
+    this.listOfCategories$ = this.store.select(fromStore.getCategoriesEnums);
+
+    this.listOfYN$ =
+      Observable.of(
+        [
+          { key: 'Y', value: 'yes' },
+          { key: 'N', value: 'No' }
+        ]);
+
+    this.config = [
+      {
+        type: "input",
+        label: "Description",
+        name: "description",
+        placeholder: "Enter your TODO description",
+        validation: [Validators.required, Validators.minLength(4)]
+      },
+      {
+        type: "select",
+        label: "Category",
+        name: "category",
+        options$: this.listOfCategories$,
+        placeholder: "Select an option",
+        validation: [Validators.required]
+      },
+      {
+        type: "input",
+        label: "Sub Category",
+        name: "subCategory",
+        placeholder: "Select an option",
+        validation: [Validators.required]
+      },
+      {
+        type: "input",
+        label: "Created by",
+        name: "createdBy",
+        placeholder: "Enter creator name",
+        validation: [Validators.required]
+      },
+      {
+        type: "date",
+        label: "Created on",
+        name: "createdOn",
+        placeholder: "yyyy-mm-dd",
+        validation: [Validators.required]
+      },
+      {
+        type: "date",
+        label: "Due by",
+        name: "dueBy",
+        placeholder: "yyyy-mm-dd",
+        validation: [Validators.required]
+      },
+      // {
+      //   type: 'select',
+      //   label: 'Priorty',
+      //   name: 'prior',
+      //   options: ['1', '2', '3', '4'],
+      //   placeholder: 'Select an option',
+      //   validation: [Validators.required]
+      // },
+      {
+        type: "select",
+        label: "checked",
+        name: "done",
+        options$: this.listOfYN$,
+        placeholder: "",
+        validation: [Validators.required]
+      },
+      {
+        type: "textArea",
+        label: "Remarks",
+        name: "remarks",
+        placeholder: "Enter the remarks",
+        validation: []
+      },
+      {
+        label: "Submit",
+        name: "submit",
+        type: "button"
+      }
+    ];
+
+    //this.store.dispatch(new fromStore.LoadEnums());
+  }
+
+  ngAfterViewInit() {
+    let previousValid = this.form.valid;
+
+    this.form.changes.subscribe(() => {
+      if (this.form.valid !== previousValid) {
+        previousValid = this.form.valid;
+        this.form.setDisabled("submit", !previousValid);
+      }
+    });
+
+    this.listOfCategories$.subscribe(e => {
+      console.log("this.listOfCategories$.subscribe", e);
+    }
+    );
+
+    // this.form.setDisabled('submit', true);
+    //  this.form.setValue('name', 'Todd Motto');
+  }
+
+  submit(value: { [name: string]: any }) {
+    console.log(value);
   }
 
   mouseEnter(div: string) {
-    this.hasFocus = true && ! this.isModeAdd;
+    this.hasFocus = true && !this.isModeAdd;
   }
 
   mouseLeave(div: string) {
-    this.hasFocus=false;
+    this.hasFocus = false;
   }
 
-  toggleModeEdit()
-  {
-    this.isModeEdit=! this.isModeEdit;
+  toggleModeEdit() {
+    this.isModeEdit = !this.isModeEdit;
   }
 
   onCreate(event: Todo) {
@@ -81,8 +203,7 @@ export class TodoItemComponent implements OnInit {
     this.store.dispatch(new fromStore.UpdateTodo(event));
   }
 
-  remove()
-  {
+  remove() {
     console.log('Remove');
   }
 

@@ -1,34 +1,7 @@
-<!-- <div class="row col-md-12" (mouseenter)="mouseEnter('div a') " (mouseleave)="mouseLeave('div A')">
-    <div class="row" *ngIf="isModeView">
-        <label>
-            <input type="checkbox" value="{{todo.id}}" [checked]="isDone" (change)="onChecked($event)" />{{todo.description}}
-        </label>
-        <a *ngIf="hasFocus" (click)="toggleModeEdit()">
-            <i class="fa fa-pencil-square-o  pull-right" aria-hidden="false"></i>
-        </a>
-        <a *ngIf="hasFocus" (click)="remove()">
-            <i class="fa fa-trash-o pull-right" aria-hidden="true"></i>
-        </a>
-    </div> -->
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{todo.createdOn}}
-        </mat-panel-title>
-        <mat-panel-description>
-            {{todo.description}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>            
-      <todo-form
-      [todo]="todo"
-      (create)="onCreate($event)"
-      (update)="onUpdate($event)"             ></todo-form>
-    </mat-expansion-panel>
-    <!-- <div class="row" *ngIf="isModeAdd || isModeEdit">
-        <todo-form
-            [todo]="todo"
-            (create)="onCreate($event)"
-            (update)="onUpdate($event)"            
-        ></todo-form>
-    </div>
-</div> -->
+<dynamic-form [config]="config" #form="dynamicForm" (submit)="submit($event)">
+</dynamic-form>
+{{ form.valid }} {{ form.value | json }}
+
+
+
+
