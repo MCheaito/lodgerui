@@ -16,7 +16,7 @@ import { Todo } from '../../models/todo.model';
         <label>List of Todos</label>
         <span class="badge pull-right">12</span>
       </div>
-      <div class ="panel panel-body">
+      <mat-accordion>
               <ul id="sortable" class="list-unstyled">
                   <li class="ui-state-default" *ngFor="let todo of (todos$ | async)">
                       <todo-item 
@@ -33,7 +33,7 @@ import { Todo } from '../../models/todo.model';
                         ></todo-item>
                   </li>
                 </ul>
-      </div>  
+      </mat-accordion>  
       <div class="panel panel-footer"></div>
       </div>  
       `
