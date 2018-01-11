@@ -31,11 +31,11 @@
         {
           "key": "2",
           "value": "Family"
-        }, 
+        },
         {
           "key": "3",
           "value": "class #1"
-        }, 
+        },
         {
           "key": "4",
           "value": "class #2"
@@ -63,8 +63,7 @@
   "todos": [
     {
       "id": 1,
-      "description":
-        "Remove React PropTypes by using Flow Annotations (in CRA)",
+      "description": "Remove React PropTypes by using Flow Annotations (in CRA)",
       "category": "Cat1",
       "subCategory": "sub1",
       "assignedTo": "M cheaito",

@@ -14,6 +14,8 @@ import {
 import { Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/of';
+
 import * as fromStore from "../../store";
 import { KeyValue } from "../../../app/dynamic-form/models/key-value.model";
 import { FieldConfig } from "../../../app/dynamic-form/models/field-config.interface";
@@ -56,19 +58,14 @@ export class TodoFormComponent implements AfterViewInit, OnInit {
 
     this.listOfCategories$ = this.store.select(fromStore.getCategoriesEnums);
     //     this.store.select(fromStore.getClientTypesEnums)
-    this.displayedDataList$ = Observable.of(
-      [
-          { key: "Number of Students", value:" 0" },
-          { key: "Success Rate", value: "0" }
-      ]
-  );
 
-    //  this.listOfYN$ = 
-    //  Observable.of([]);
-      //  [
-      //    { key: 'Y', value: 'yes' },
-      //    { key: 'N', value: 'No' }
-      //  ]);
+
+     this.listOfYN$ = 
+     Observable.of(
+       [
+         { key: 'Y', value: 'yes' },
+         { key: 'N', value: 'No' }
+       ]);
 
     this.config = [
       {
