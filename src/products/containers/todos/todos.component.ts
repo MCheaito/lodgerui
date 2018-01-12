@@ -9,6 +9,9 @@ import { Todo } from '../../models/todo.model';
   selector: 'todos',
   //styleUrls: ['products.component.scss'],
   template: `
+  <div fxLayout="row"  fxFlex class="coloredContainerX box">
+  <div>1. One</div> <div>2. Two</div> <div>3. Three</div> <div>4. Four</div>
+</div>
   <div class="panel  panel-default">
   <div class="panel panel-heading">
       <i class="fa fa-tasks pull-left" aria-hidden="true"></i>

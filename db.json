@@ -110,7 +110,7 @@
     {
       "id": 1,
       "description": "Remove React PropTypes by using Flow Annotations (in CRA)",
-      "category": "Cat1",
+      "category": "1",
       "subCategory": "sub1",
       "assignedTo": "M cheaito",
       "createdBy": "M cheaito",
@@ -123,7 +123,7 @@
     {
       "id": 2,
       "description": "Fill out insurance form, and send it to tha company",
-      "category": "Cat1",
+      "category": "1",
       "subCategory": "sub1",
       "assignedTo": "M cheaito",
       "createdBy": "M cheaito",
@@ -136,7 +136,7 @@
     {
       "id": 3,
       "description": "Buy ticket to  ",
-      "category": "Cat1",
+      "category": "1",
       "subCategory": "sub1",
       "assignedTo": "M cheaito",
       "createdBy": "M cheaito",
@@ -148,34 +148,34 @@
     },
     {
       "description": "dsdsd",
-      "category": "dsdas",
+      "category": "2",
       "subCategory": "dasdasd",
       "id": 4
     },
     {
       "description": "test --1",
-      "category": "Cate",
+      "category": "2",
       "subCategory": "ddd",
       "id": 5,
       "done": false
     },
     {
       "description": "test --1",
-      "category": "Cate",
+      "category": "2",
       "subCategory": "ddd",
       "id": 6,
       "done": false
     },
     {
       "description": "test --1",
-      "category": "Cate",
+      "category": "2",
       "subCategory": "ddd",
       "id": 7,
       "done": true
     },
     {
       "description": "Buy ticket to lebanon",
-      "category": "Cat1",
+      "category": "2",
       "subCategory": "sub1",
       "id": 8
     }
