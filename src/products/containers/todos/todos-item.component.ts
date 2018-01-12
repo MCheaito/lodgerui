@@ -90,6 +90,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       {
         type: "input",
         label: "Description",
+        class: "col-md-12",
         name: "description",
         placeholder: "Enter your TODO description",
         validation: [Validators.required, Validators.minLength(4)]
@@ -97,6 +98,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       {
         type: "select",
         label: "Category",
+        class: "col-md-6",
         name: "category",
         options$: this.listOfCategories$,
         placeholder: "Select an option",
@@ -104,6 +106,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       },
       {
         type: "input",
+        class: "col-md-6",
         label: "Sub Category",
         name: "subCategory",
         placeholder: "Select an option",
@@ -113,6 +116,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: "input",
         label: "Created by",
         name: "createdBy",
+        class: "col-md-6",
         placeholder: "Enter creator name",
         validation: [Validators.required]
       },
@@ -120,12 +124,14 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: "date",
         label: "Created on",
         name: "createdOn",
+        class: "col-md-6",
         placeholder: "yyyy-mm-dd",
         validation: [Validators.required]
       },
       {
         type: "date",
         label: "Due by",
+        class: "col-md-4",
         name: "dueBy",
         placeholder: "yyyy-mm-dd",
         validation: [Validators.required]
@@ -133,6 +139,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       {
         type: 'select',
         label: 'Severity',
+        class: "col-md-4",
         name: 'severity',
         options$: this.listOfSeverity$,
         placeholder: 'Select severity',
@@ -141,6 +148,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       {
         type: 'select',
         label: 'Priorty',
+        class: "col-md-4",
         name: 'prior',
         options$: this.listOfPriorty$,
         placeholder: 'Select an option',
@@ -148,15 +156,17 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       },
       {
         type: "select",
-        label: "checked",
+        label: "Closed",
         name: "done",
         options$: this.listOfYN$,
+        class: "col-md-12",
         placeholder: "",
         validation: [Validators.required]
       },
       {
         type: "textArea",
         label: "Remarks",
+        class: "col-md-12",
         name: "remarks",
         placeholder: "Enter the remarks",
         validation: []
@@ -185,7 +195,16 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
     );
 
     // this.form.setDisabled('submit', true);
-    //  this.form.setValue('name', 'Todd Motto');
+    this.form.controls.forEach(cfg => {
+      this.form.setValue(cfg.name, this.todo[cfg.name] );
+      // if (eval(`this.todo`)) {
+      //   this.form.setValue(cfg.name, eval(`this.todo.${cfg.name}`));
+      // }
+    }
+    )
+    //setValue('description', eval('this.todo.description'));
+
+
   }
 
   submit(value: { [name: string]: any }) {
