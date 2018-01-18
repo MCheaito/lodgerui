@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { reducers, effects } from './store';
 import { DynamicFormModule } from '../app/dynamic-form/dynamic-form.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 // // components
 // import * as fromComponents from './components';
@@ -41,7 +42,8 @@ export const ROUTES: Routes = [
     RouterModule.forChild(ROUTES),
     StoreModule.forFeature('products', reducers),
     EffectsModule.forFeature(effects),  
-    DynamicFormModule  
+    DynamicFormModule, 
+    FlexLayoutModule  
   ],
   providers: [...fromServices.services],
   declarations: [...fromContainers.containers],
