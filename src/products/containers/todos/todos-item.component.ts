@@ -155,10 +155,9 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         validation: [Validators.required]
       },
       {
-        type: "select",
+        type: "checkbox",
         label: "Closed",
         name: "done",
-        options$: this.listOfYN$,
         class: "col-md-12",
         placeholder: "",
         validation: [Validators.required]
@@ -195,13 +194,10 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
     );
 
     // this.form.setDisabled('submit', true);
-    this.form.controls.forEach(cfg => {
-      this.form.setValue(cfg.name, this.todo[cfg.name] );
-      // if (eval(`this.todo`)) {
-      //   this.form.setValue(cfg.name, eval(`this.todo.${cfg.name}`));
-      // }
-    }
-    )
+    // this.form.controls.forEach(cfg => {
+    //   this.form.setValue(cfg.name, this.todo[cfg.name] );
+    // }
+    // )
     //setValue('description', eval('this.todo.description'));
 
 

@@ -43,7 +43,8 @@ import { FormButtonComponent } from "./components/form-button/form-button.compon
 import { FormInputComponent } from "./components/form-input/form-input.component";
 import { FormSelectComponent } from "./components/form-select/form-select.component";
 import { FormDateComponent } from "./components/form-date/form-date.component";
-import { FromTextAreaComponent } from "./components/form-text-area/form-text-area.component";
+import { FormCheckBoxComponent } from "./components/form-checkbox/form-checkbox.component";
+import { FormTextAreaComponent } from "./components/form-text-area/form-text-area.component";
 
 @NgModule({
   exports: [
@@ -125,17 +126,17 @@ import { FromTextAreaComponent } from "./components/form-text-area/form-text-are
     FormInputComponent,
     FormSelectComponent,
     FormDateComponent, 
-    FromTextAreaComponent
+    FormTextAreaComponent, 
+    FormCheckBoxComponent
   ],
-//  exports: [DynamicFormComponent],
   entryComponents: [
     FormButtonComponent,
     FormInputComponent,
     FormSelectComponent,
     FormDateComponent, 
-    FromTextAreaComponent
-
-       
+    FormTextAreaComponent, 
+    FormCheckBoxComponent
+     
   ]
 })
 export class DynamicFormModule {}

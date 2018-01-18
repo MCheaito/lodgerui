@@ -24,7 +24,7 @@ import { FieldConfig } from '../../models/field-config.interface';
 
   `
 })
-export class FromTextAreaComponent implements Field {
+export class FormTextAreaComponent implements Field {
   config: FieldConfig;
   group: FormGroup;
 }
