@@ -12,12 +12,22 @@ import { FieldConfig } from '../../models/field-config.interface';
       class="dynamic-form"
       [formGroup]="form"
       (submit)="handleSubmit($event)">
-      <ng-container
+
+      <mat-grid-list cols="4"  rowHeight="2:1">
+
+      <mat-grid-tile
         *ngFor="let field of config;"
+        [colspan]="field.md.colspan"
+        [rowspan]="field.md.rowspan"
+        [style.background]="field.md.color" 
+        >
+        <ng-container
         dynamicField
         [config]="field"
-        [group]="form">
-      </ng-container>
+        [group]="form"  > </ng-container>
+     
+      </mat-grid-tile>
+      </mat-grid-list>
     </form>
   `
 })
@@ -30,12 +40,12 @@ export class DynamicFormComponent implements OnChanges, OnInit {
 
   form: FormGroup;
 
-  get controls() { return this.config.filter(({type}) => type !== 'button'); }
+  get controls() { return this.config.filter(({ type }) => type !== 'button'); }
   get changes() { return this.form.valueChanges; }
   get valid() { return this.form.valid; }
   get value() { return this.form.value; }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.form = this.createGroup();
@@ -79,7 +89,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
 
   setDisabled(name: string, disable: boolean) {
     if (this.form.controls[name]) {
-      const method = disable ? 'disable': 'enable';
+      const method = disable ? 'disable' : 'enable';
       this.form.controls[name][method]();
       return;
     }
@@ -93,6 +103,6 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   setValue(name: string, value: any) {
-    this.form.controls[name].setValue(value, {emitEvent: true});
+    this.form.controls[name].setValue(value, { emitEvent: true });
   }
 }
