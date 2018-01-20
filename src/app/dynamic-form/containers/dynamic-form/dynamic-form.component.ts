@@ -13,18 +13,19 @@ import { FieldConfig } from '../../models/field-config.interface';
       [formGroup]="form"
       (submit)="handleSubmit($event)">
 
-      <mat-grid-list cols="4"  rowHeight="2:1">
+      <mat-grid-list cols="4"  rowHeight="2:1" fxLayout="row" >
 
       <mat-grid-tile
         *ngFor="let field of config;"
         [colspan]="field.md.colspan"
         [rowspan]="field.md.rowspan"
         [style.background]="field.md.color" 
+        fxFlexFill
         >
         <ng-container
         dynamicField
         [config]="field"
-        [group]="form"  > </ng-container>
+        [group]="form"   fxFlexFill> </ng-container>
      
       </mat-grid-tile>
       </mat-grid-list>
