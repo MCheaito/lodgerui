@@ -8,6 +8,20 @@ import { FieldConfig } from '../../models/field-config.interface';
   selector: 'dynamic-form',
   styleUrls: ['dynamic-form.component.scss'],
   template: `
+
+
+
+  <ul class="flex-container">
+  <li class="flex-item">1</li>
+  <li class="flex-item">2</li>
+  <li class="flex-item">3</li>
+  <li class="flex-item">4</li>
+  <li class="flex-item">5</li>
+  <li class="flex-item">6</li>
+</ul>
+
+
+
     <form
       class="dynamic-form"
       [formGroup]="form"
@@ -20,12 +34,12 @@ import { FieldConfig } from '../../models/field-config.interface';
         [colspan]="field.md.colspan"
         [rowspan]="field.md.rowspan"
         [style.background]="field.md.color" 
-        fxFlexFill
+        fx
         >
         <ng-container
         dynamicField
         [config]="field"
-        [group]="form"   fxFlexFill> </ng-container>
+        [group]="form"  > </ng-container>
      
       </mat-grid-tile>
       </mat-grid-list>
