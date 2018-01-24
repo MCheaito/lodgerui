@@ -52,17 +52,13 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
 // routes
 export const ROUTES: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'products' },
-    {
-        path: 'products',
-        loadChildren: '../products/products.module#ProductsModule',
-    }
-    // ,
-    // { path: 'home', component: HomeComponent },
-    // { path: 'login', component: AuthenticationComponent },
-    // { path: 'logout', component: AuthenticationComponent },
-    // { path: 'dashboard', component: DashboardComponent },
-    // { path: 'booking', loadChildren: './components/booking/booking.module#BookingModule' },
-    // { path: '**', component: PageNotFoundComponent }
+    { path: 'products',        loadChildren: '../products/products.module#ProductsModule'},
+    { path: 'home', component: HomeComponent },
+    { path: 'login', component: AuthenticationComponent },
+    { path: 'logout', component: AuthenticationComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'booking', loadChildren: './components/booking/booking.module#BookingModule' },
+    { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
