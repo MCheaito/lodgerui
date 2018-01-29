@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+import {Observable} from 'rxjs/Observable';
 import { FieldConfig } from '../../models/field-config.interface';
 
 @Component({
@@ -8,41 +9,15 @@ import { FieldConfig } from '../../models/field-config.interface';
   selector: 'dynamic-form',
   styleUrls: ['dynamic-form.component.scss'],
   template: `
-
-
-
-  <ul class="flex-container">
-  <li class="flex-item">1</li>
-  <li class="flex-item">2</li>
-  <li class="flex-item">3</li>
-  <li class="flex-item">4</li>
-  <li class="flex-item">5</li>
-  <li class="flex-item">6</li>
-</ul>
-
-
-
-    <form
+   <form
       class="dynamic-form"
       [formGroup]="form"
       (submit)="handleSubmit($event)">
-
-      <mat-grid-list cols="4"  rowHeight="2:1" fxLayout="row" >
-
-      <mat-grid-tile
+      <ng-container
         *ngFor="let field of config;"
-        [colspan]="field.md.colspan"
-        [rowspan]="field.md.rowspan"
-        [style.background]="field.md.color" 
-        fx
-        >
-        <ng-container
         dynamicField
         [config]="field"
-        [group]="form"  > </ng-container>
-     
-      </mat-grid-tile>
-      </mat-grid-list>
+        [group]="form"> </ng-container>
     </form>
   `
 })
@@ -54,13 +29,16 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   submit: EventEmitter<any> = new EventEmitter<any>();
 
   form: FormGroup;
+  mode: string;
 
   get controls() { return this.config.filter(({ type }) => type !== 'button'); }
   get changes() { return this.form.valueChanges; }
   get valid() { return this.form.valid; }
   get value() { return this.form.value; }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) { 
+
+ }
 
   ngOnInit() {
     this.form = this.createGroup();
@@ -119,5 +97,10 @@ export class DynamicFormComponent implements OnChanges, OnInit {
 
   setValue(name: string, value: any) {
     this.form.controls[name].setValue(value, { emitEvent: true });
+  }
+
+  onResize(evnt)
+  {
+    console.log("resizing => ", evnt);
   }
 }

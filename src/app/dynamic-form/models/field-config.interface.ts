@@ -12,5 +12,4 @@ export interface FieldConfig {
   validation?: ValidatorFn[];
   value?: any;
   class?: string;
-  md:{colspan:number, rowspan:number, color:string};
 }

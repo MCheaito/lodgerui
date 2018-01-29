@@ -9,7 +9,7 @@ import { FieldConfig } from '../../models/field-config.interface';
   styleUrls: ['form-input.component.scss'],
   template:
     `
-  <mat-form-field  [formGroup] = "group">
+  <mat-form-field  [formGroup] = "group" [class]="config.class">
     <input matInput placeholder="{{ config.label }}" value ="" [formControlName] ="config.name" >
   </mat-form-field>
   `

@@ -16,7 +16,9 @@ import { FieldConfig } from '../../models/field-config.interface';
   selector: 'form-button',
   styleUrls: ['form-button.component.scss'],
   template: `
-    <button mat-raised-button color="primary" [disabled]="config.disabled" >{{ config.label }}</button>
+  <div [class]="config.class">
+    <button mat-raised-button color="primary" [disabled]="config.disabled"  >{{ config.label }}</button>
+  </div>
   `
 })
 export class FormButtonComponent implements Field {

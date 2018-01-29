@@ -17,7 +17,7 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
   selector: 'form-select',
   styleUrls: ['form-select.component.scss'],
   template: `
-  <mat-form-field [formGroup] = "group">
+  <mat-form-field [formGroup] = "group" [class]="config.class">
   <mat-select placeholder ="{{ config.label }}" [formControlName] = "config.name">
     <mat-option *ngFor="let option of (config.options$ | async)" [value] ="option.key">
       {{ option.value }} 

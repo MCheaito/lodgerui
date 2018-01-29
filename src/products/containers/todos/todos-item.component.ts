@@ -31,6 +31,7 @@ import { DynamicFormComponent } from "../../../app/dynamic-form/containers/dynam
 @Component({
   selector: 'todo-item',
   templateUrl: 'todos-item.component.html',
+  styleUrls: ['todos-item.component.scss']
 })
 // <todo-form
 // [todo]="todo$ | async"
@@ -91,7 +92,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: "input",
         label: "Description",
         name: "description",
-        md: {colspan:4, rowspan:1, color:"lightblue"},
+        class:"full-width",
         placeholder: "Enter your TODO description",
         validation: [Validators.required, Validators.minLength(4)]
       }
@@ -99,8 +100,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       {
         type: "select",
         label: "Category",
-        class: "col-md-6",
-        md: {colspan:2, rowspan:1, color:"lightblue"},   
+        class: "col-xs-12 col-md-6",
         name: "category",
         options$: this.listOfCategories$,
         placeholder: "Select an option",
@@ -108,8 +108,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       },
       {
         type: "input",
-        class: "col-md-6",
-        md: {colspan:2, rowspan:1, color:"lightblue"},
+        class: "col-xs-12 col-md-6",
         label: "Sub Category",
         name: "subCategory",
         placeholder: "Select an option",
@@ -119,8 +118,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: "input",
         label: "Created by",
         name: "createdBy",
-        class: "col-md-6",
-        md: {colspan:4, rowspan:1, color:"lightblue"},
+        class:"full-width",
         placeholder: "Enter creator name",
         validation: [Validators.required]
       },
@@ -129,7 +127,6 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         label: "Created on",
         name: "createdOn",
         class: "col-md-6",
-        md: {colspan:4, rowspan:1, color:"lightblue"},
         placeholder: "yyyy-mm-dd",
         validation: [Validators.required]
       },
@@ -137,7 +134,6 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: "date",
         label: "Due by",
         class: "col-md-4",
-        md: {colspan:4, rowspan:1, color:"lightblue"},
         name: "dueBy",
         placeholder: "yyyy-mm-dd",
         validation: [Validators.required]
@@ -145,8 +141,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       {
         type: 'select',
         label: 'Severity',
-        class: "col-md-4",
-        md: {colspan:4, rowspan:1, color:"lightblue"},
+        class:"full-width",
         name: 'severity',
         options$: this.listOfSeverity$,
         placeholder: 'Select severity',
@@ -156,7 +151,6 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: 'select',
         label: 'Priorty',
         class: "col-md-4",
-        md: {colspan:4, rowspan:1, color:"lightblue"},
         name: 'prior',
         options$: this.listOfPriorty$,
         placeholder: 'Select an option',
@@ -167,7 +161,6 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         label: "Closed",
         name: "done",
         class: "col-md-12",
-        md: {colspan:4, rowspan:1, color:"lightblue"},
         placeholder: "",
         validation: [Validators.required]
       },
@@ -175,7 +168,6 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: "textArea",
         label: "Remarks",
         class: "col-md-12",
-        md: {colspan:4, rowspan:1, color:"lightblue"},
         name: "remarks",
         placeholder: "Enter the remarks",
         validation: []
@@ -184,7 +176,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         label: "Submit",
         name: "submit",
         type: "button",
-        md: {colspan:4, rowspan:1, color:"lightblue"}
+        class:"row"
       }
     ];
   }
