@@ -20,6 +20,7 @@
 // }
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component} from '@angular/core';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 /** @title Responsive sidenav */
 @Component({
@@ -29,7 +30,7 @@ import {ChangeDetectorRef, Component} from '@angular/core';
    './app.component.css'
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   fillerNav = Array(50).fill(0).map((_, i) => `Nav Item ${i + 1}`);
@@ -46,9 +47,9 @@ export class AppComponent {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+  // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }
 
 
 
-       
+

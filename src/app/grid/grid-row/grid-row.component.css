@@ -1,0 +1,6 @@
+:host {
+    display: flex;
+    flex: column;
+    flex-grow: 1;
+    color: tomato;
+  }
