@@ -7,7 +7,7 @@ import { FieldConfig } from "../../models/field-config.interface";
 @Component({
   selector: "form-checkbox",
   template: `
-  <div [formGroup] = "group" [class]="config.class">
+  <div [formGroup] = "group" >
     <mat-checkbox [formControlName] ="config.name">
       {{ config.label }}
     </mat-checkbox>

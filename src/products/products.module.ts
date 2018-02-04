@@ -41,9 +41,9 @@ export const ROUTES: Routes = [
     HttpClientModule,
     RouterModule.forChild(ROUTES),
     StoreModule.forFeature('products', reducers),
-    EffectsModule.forFeature(effects),  
-    DynamicFormModule, 
-    FlexLayoutModule  
+    EffectsModule.forFeature(effects),
+    DynamicFormModule,
+    FlexLayoutModule
   ],
   providers: [...fromServices.services],
   declarations: [...fromContainers.containers],

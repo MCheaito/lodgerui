@@ -10,7 +10,7 @@ import { Todo } from '../../models/todo.model';
   selector: 'todos',
   //styleUrls: ['products.component.scss'],
   template: `
-  <div class="panel  panel-default">
+  <div class="panel  panel-default col-md-6">
   <div class="panel panel-heading">
       <i class="fa fa-tasks pull-left" aria-hidden="true"></i>
       <label>List of Tasks To do</label>

@@ -7,7 +7,7 @@ import { FieldConfig } from '../../models/field-config.interface';
   selector: 'form-date',
   styleUrls: ['form-date.component.scss'],
   template: `
-    <mat-form-field  [formGroup]="group" [class]="config.class">
+    <mat-form-field  [formGroup]="group" >
     <input matInput [matDatepicker] = "picker" placeholder = "{{ config.label }}"  [formControlName] = "config.name" />
     <mat-datepicker-toggle matSuffix [for] = "picker" ></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
