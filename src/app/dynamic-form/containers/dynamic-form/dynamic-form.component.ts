@@ -1,12 +1,19 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output
+} from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { FieldConfig } from '../../models/field-config.interface';
 
 @Component({
   exportAs: 'dynamicForm',
-  selector: 'dynamic-form',
+  selector: 'app-dynamic-form',
   styleUrls: ['dynamic-form.component.scss'],
   template: `
    <form
@@ -22,23 +29,27 @@ import { FieldConfig } from '../../models/field-config.interface';
   `
 })
 export class DynamicFormComponent implements OnChanges, OnInit {
-  @Input()
-  config: FieldConfig[] = [];
+  @Input() config: FieldConfig[] = [];
 
-  @Output()
-  submit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() submit: EventEmitter<any> = new EventEmitter<any>();
 
   form: FormGroup;
   mode: string;
 
-  get controls() { return this.config.filter(({ type }) => type !== 'button'); }
-  get changes() { return this.form.valueChanges; }
-  get valid() { return this.form.valid; }
-  get value() { return this.form.value; }
+  get controls() {
+    return this.config.filter(({ type }) => type !== 'button');
+  }
+  get changes() {
+    return this.form.valueChanges;
+  }
+  get valid() {
+    return this.form.valid;
+  }
+  get value() {
+    return this.form.value;
+  }
 
-  constructor(private fb: FormBuilder) { 
-
- }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this.createGroup();
@@ -47,25 +58,26 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   ngOnChanges() {
     if (this.form) {
       const controls = Object.keys(this.form.controls);
-      const configControls = this.controls.map((item) => item.name);
+      const configControls = this.controls.map(item => item.name);
 
       controls
-        .filter((control) => !configControls.includes(control))
-        .forEach((control) => this.form.removeControl(control));
+        .filter(control => !configControls.includes(control))
+        .forEach(control => this.form.removeControl(control));
 
       configControls
-        .filter((control) => !controls.includes(control))
-        .forEach((name) => {
-          const config = this.config.find((control) => control.name === name);
+        .filter(control => !controls.includes(control))
+        .forEach(name => {
+          const config = this.config.find(control => control.name === name);
           this.form.addControl(name, this.createControl(config));
         });
-
     }
   }
 
   createGroup() {
     const group = this.fb.group({});
-    this.controls.forEach(control => group.addControl(control.name, this.createControl(control)));
+    this.controls.forEach(control =>
+      group.addControl(control.name, this.createControl(control))
+    );
     return group;
   }
 
@@ -87,7 +99,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
       return;
     }
 
-    this.config = this.config.map((item) => {
+    this.config = this.config.map(item => {
       if (item.name === name) {
         item.disabled = disable;
       }
@@ -99,8 +111,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
     this.form.controls[name].setValue(value, { emitEvent: true });
   }
 
-  onResize(evnt)
-  {
-    console.log("resizing => ", evnt);
+  onResize(evnt) {
+    console.log('resizing => ', evnt);
   }
 }
