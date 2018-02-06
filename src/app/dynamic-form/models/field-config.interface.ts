@@ -1,6 +1,6 @@
-import { ValidatorFn } from "@angular/forms";
-import { KeyValue } from "./key-value.model";
-import { Observable } from "rxjs/Observable";
+import { ValidatorFn } from '@angular/forms';
+import { KeyValue } from './key-value.model';
+import { Observable } from 'rxjs/Observable';
 
 export interface FieldConfig {
   disabled?: boolean;
@@ -12,4 +12,5 @@ export interface FieldConfig {
   validation?: ValidatorFn[];
   value?: any;
   class?: string;
+  cols?: number;
 }

@@ -24,9 +24,9 @@ import { tap } from 'rxjs/operators';
 import * as fromStore from '../../store';
 import { Todo } from '../../models/todo.model';
 import 'rxjs/add/observable/of';
-import { KeyValue } from "../../../app/dynamic-form/models/key-value.model";
-import { FieldConfig } from "../../../app/dynamic-form/models/field-config.interface";
-import { DynamicFormComponent } from "../../../app/dynamic-form/containers/dynamic-form/dynamic-form.component";
+import { KeyValue } from '../../../app/dynamic-form/models/key-value.model';
+import { FieldConfig } from '../../../app/dynamic-form/models/field-config.interface';
+import { DynamicFormComponent } from '../../../app/dynamic-form/containers/dynamic-form/dynamic-form.component';
 
 @Component({
   selector: 'todo-item',
@@ -74,8 +74,8 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
 
     this.isDone = ((this.todo) ? this.todo.done : false);
     this.isModeEdit = false;
-    this.isModeView = (this.mode == "VIEW");
-    this.isModeAdd = (this.mode == "ADD")
+    this.isModeView = (this.mode === 'VIEW');
+    this.isModeAdd = (this.mode === 'ADD')
 
     this.listOfCategories$ = this.store.select(fromStore.getCategoriesEnums);
     this.listOfSeverity$ = this.store.select(fromStore.getSeverityEnums);
@@ -89,59 +89,60 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
 
     this.config = [
       {
-        type: "input",
-        label: "Description",
-        name: "description",
-        class:"full-width",
-        placeholder: "Enter your TODO description",
+        type: 'input',
+        label: 'Description',
+        name: 'description',
+        class: 'full-width',
+        placeholder: 'Enter your TODO description',
+        cols: 2,
         validation: [Validators.required, Validators.minLength(4)]
       }
       ,
       {
-        type: "select",
-        label: "Category",
-        class: "col-xs-12 col-md-6",
-        name: "category",
+        type: 'select',
+        label: 'Category',
+        class: 'col-xs-12 col-md-6',
+        name: 'category',
         options$: this.listOfCategories$,
-        placeholder: "Select an option",
+        placeholder: 'Select an option',
         validation: [Validators.required]
       },
       {
-        type: "input",
-        class: "col-xs-12 col-md-6",
-        label: "Sub Category",
-        name: "subCategory",
-        placeholder: "Select an option",
+        type: 'input',
+        class: 'col-xs-12 col-md-6',
+        label: 'Sub Category',
+        name: 'subCategory',
+        placeholder: 'Select an option',
         validation: [Validators.required]
       },
       {
-        type: "input",
-        label: "Created by",
-        name: "createdBy",
-        class:"full-width",
-        placeholder: "Enter creator name",
+        type: 'input',
+        label: 'Created by',
+        name: 'createdBy',
+        class: 'full-width',
+        placeholder: 'Enter creator name',
         validation: [Validators.required]
       },
       {
-        type: "date",
-        label: "Created on",
-        name: "createdOn",
-        class: "col-md-6",
-        placeholder: "yyyy-mm-dd",
+        type: 'date',
+        label: 'Created on',
+        name: 'createdOn',
+        class: 'col-md-6',
+        placeholder: 'yyyy-mm-dd',
         validation: [Validators.required]
       },
       {
-        type: "date",
-        label: "Due by",
-        class: "col-md-4",
-        name: "dueBy",
-        placeholder: "yyyy-mm-dd",
+        type: 'date',
+        label: 'Due by',
+        class: 'col-md-4',
+        name: 'dueBy',
+        placeholder: 'yyyy-mm-dd',
         validation: [Validators.required]
       },
       {
         type: 'select',
         label: 'Severity',
-        class:"full-width",
+        class: 'full-width',
         name: 'severity',
         options$: this.listOfSeverity$,
         placeholder: 'Select severity',
@@ -150,33 +151,35 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
       {
         type: 'select',
         label: 'Priorty',
-        class: "col-md-4",
+        class: 'col-md-4',
         name: 'prior',
         options$: this.listOfPriorty$,
         placeholder: 'Select an option',
         validation: [Validators.required]
       },
       {
-        type: "checkbox",
-        label: "Closed",
-        name: "done",
-        class: "col-md-12",
-        placeholder: "",
+        type: 'checkbox',
+        label: 'Closed',
+        name: 'done',
+        class: 'col-md-12',
+        placeholder: '',
         validation: [Validators.required]
       },
       {
-        type: "textArea",
-        label: "Remarks",
-        class: "col-md-12",
-        name: "remarks",
-        placeholder: "Enter the remarks",
+        type: 'textArea',
+        label: 'Remarks',
+        class: 'col-md-12',
+        name: 'remarks',
+        cols:2,
+        placeholder: 'Enter the remarks',
         validation: []
       },
       {
-        label: "Submit",
-        name: "submit",
-        type: "button",
-        class:"row"
+        label: 'Submit',
+        name: 'submit',
+        type: 'button',
+        class: 'row',
+        cols:2
       }
     ];
   }
@@ -187,12 +190,12 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
     this.form.changes.subscribe(() => {
       if (this.form.valid !== previousValid) {
         previousValid = this.form.valid;
-        this.form.setDisabled("submit", !previousValid);
+        this.form.setDisabled('submit', !previousValid);
       }
     });
 
     this.listOfCategories$.subscribe(e => {
-      console.log("this.listOfCategories$.subscribe", e);
+      console.log('this.listOfCategories$.subscribe', e);
     }
     );
 
