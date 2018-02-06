@@ -20,16 +20,16 @@ import { FieldConfig } from '../../models/field-config.interface';
   class="dynamic-form"
   [formGroup]="form"
   (submit)="handleSubmit($event)">
-    <mat-grid-list cols="2"rowHeight='75px'  >
-      <mat-grid-tile  *ngFor="let field of config;"    [colspan]="field.cols || 1"
-       rowspan="1" style="border: 2px solid black; width:100%" >
-      <div style="position:absolute;left: 0px; top:0px; background-color:yellow;">
+    <mat-grid-list cols='2' >
+    <div  layout-fill  *ngFor="let field of config;">
+      <mat-grid-tile  [colspan]= 'field.cols || 1' rowspan="1" >
           <ng-container
             dynamicField
             [config]="field"
             [group]="form"> </ng-container>
-      </div>
       </mat-grid-tile>
+      </div>
+
     </mat-grid-list>
     </form>
   `
