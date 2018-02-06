@@ -1,5 +1,5 @@
-<dynamic-form [config]="config" #form="dynamicForm" (submit)="submit($event)">
-</dynamic-form>
+<app-dynamic-form [config]="config" #form="dynamicForm" (submit)="submit($event)">
+</app-dynamic-form>
 {{ form.valid }} {{ form.value | json }}
 
 

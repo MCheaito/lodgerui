@@ -16,15 +16,20 @@ import { FieldConfig } from '../../models/field-config.interface';
   selector: 'app-dynamic-form',
   styleUrls: ['dynamic-form.component.scss'],
   template: `
-   <form
-      class="dynamic-form"
-      [formGroup]="form"
-      (submit)="handleSubmit($event)">
-      <ng-container
-        *ngFor="let field of config;"
-        dynamicField
-        [config]="field"
-        [group]="form"> </ng-container>
+  <form
+  class="dynamic-form"
+  [formGroup]="form"
+  (submit)="handleSubmit($event)">
+    <mat-grid-list cols="2" >
+      <mat-grid-tile  *ngFor="let field of config;"    colspan="1"    rowspan="1" style="border: 2px solid black; width:100%" > 
+      <div style="position:absolute;left: 0px; top:0px; background-color:yellow;">
+          <ng-container
+            dynamicField
+            [config]="field"
+            [group]="form"> </ng-container>
+      </div>
+      </mat-grid-tile>
+    </mat-grid-list>
     </form>
   `
 })
