@@ -21,7 +21,6 @@ import { FieldConfig } from '../../models/field-config.interface';
     <mat-form-field  [formGroup] = "group">
       <textarea matInput placeholder="{{ config.label }}"  [formControlName] = "config.name"></textarea>
     </mat-form-field>
-
   `
 })
 export class FormTextAreaComponent implements Field {
