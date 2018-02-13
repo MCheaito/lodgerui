@@ -15,10 +15,10 @@ import {
   FormGroup,
   FormArray,
   FormBuilder,
-  Validators,
+  Validators
 } from '@angular/forms';
 
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
 import * as fromStore from '../../store';
@@ -40,11 +40,10 @@ import { DynamicFormComponent } from '../../../app/dynamic-form/containers/dynam
 // (update)="onUpdate($event)"
 // (remove)="onRemove($event)">
 // </todo-form>
-
 export class TodoItemComponent implements AfterViewInit, OnInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
 
-  private config: FieldConfig[];
+  public config: FieldConfig[];
   private exists = false;
 
   @Input() todo: Todo;
@@ -68,24 +67,21 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<fromStore.ProductsState>
-  ) { }
+  ) {}
 
   ngOnInit() {
-
-    this.isDone = ((this.todo) ? this.todo.done : false);
+    this.isDone = this.todo ? this.todo.done : false;
     this.isModeEdit = false;
-    this.isModeView = (this.mode === 'VIEW');
-    this.isModeAdd = (this.mode === 'ADD')
+    this.isModeView = this.mode === 'VIEW';
+    this.isModeAdd = this.mode === 'ADD';
 
-    this.listOfCategories$ = this.store.select(fromStore.getCategoriesEnums);
-    this.listOfSeverity$ = this.store.select(fromStore.getSeverityEnums);
-    this.listOfPriorty$ = this.store.select(fromStore.getPriorityEnums);
-    this.listOfYN$ =
-      Observable.of(
-        [
-          { key: 'Y', value: 'yes' },
-          { key: 'N', value: 'No' }
-        ]);
+    this.listOfCategories$ = this.store.pipe(select(fromStore.getCategoriesEnums));
+    this.listOfSeverity$ = this.store.pipe(select(fromStore.getSeverityEnums));
+    this.listOfPriorty$ = this.store.pipe(select(fromStore.getPriorityEnums));
+    this.listOfYN$ = Observable.of([
+      { key: 'Y', value: 'yes' },
+      { key: 'N', value: 'No' }
+    ]);
 
     this.config = [
       {
@@ -93,10 +89,9 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         label: 'Description',
         name: 'description',
         placeholder: 'Enter your TODO description',
-        cols:2,
+        cols: 2,
         validation: [Validators.required, Validators.minLength(4)]
-      }
-      ,
+      },
       {
         type: 'select',
         label: 'Category',
@@ -160,7 +155,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         type: 'textArea',
         label: 'Remarks',
         name: 'remarks',
-        cols:2,
+        cols: 2,
         placeholder: 'Enter the remarks',
         validation: []
       },
@@ -168,7 +163,7 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
         label: 'Submit',
         name: 'submit',
         type: 'button',
-        cols:2
+        cols: 2
       }
     ];
   }
@@ -185,17 +180,14 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
 
     this.listOfCategories$.subscribe(e => {
       console.log('this.listOfCategories$.subscribe', e);
-    }
-    );
+    });
 
     // this.form.setDisabled('submit', true);
     // this.form.controls.forEach(cfg => {
     //   this.form.setValue(cfg.name, this.todo[cfg.name] );
     // }
     // )
-    //setValue('description', eval('this.todo.description'));
-
-
+    // setValue('description', eval('this.todo.description'));
   }
 
   submit(value: { [name: string]: any }) {
@@ -226,18 +218,13 @@ export class TodoItemComponent implements AfterViewInit, OnInit {
     console.log('Remove');
   }
 
-
   onChecked(value) {
-
     this.isDone = value.target.checked;
     const done = this.isDone;
 
-    this.onChanged.emit(
-      {
-        ...this.todo,
-        done
-      }
-    );
+    this.onChanged.emit({
+      ...this.todo,
+      done
+    });
   }
-
 }

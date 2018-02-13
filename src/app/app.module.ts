@@ -1,7 +1,7 @@
 import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
 import { GridModule } from './grid/grid.module'
 import { ChartsModule } from 'ng2-charts';
-import { HomeComponent } from './components/home/home.component';
+// import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, Http, RequestOptions, XHRBackend } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,7 +36,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { GridRowComponent } from './grid/grid-row/grid-row.component';
 import { GridItemComponent } from './grid/grid-item/grid-item.component';
-import { GridComponent } from './grid/grid/grid.component';
+// import { GridComponent } from './grid/grid/grid.component';
 
 // this would be done dynamically with webpack for builds
 const environment = {
@@ -57,7 +57,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
 export const ROUTES: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'products' },
     { path: 'products',        loadChildren: '../products/products.module#ProductsModule'},
-    { path: 'home', component: HomeComponent },
+    // { path: 'home', component: HomeComponent },
     { path: 'login', component: AuthenticationComponent },
     { path: 'logout', component: AuthenticationComponent },
     { path: 'dashboard', component: DashboardComponent },
@@ -73,7 +73,7 @@ export const ROUTES: Routes = [
         ContactComponent,
         AuthenticationComponent,
         PageNotFoundComponent,
-        HomeComponent, ShowMessageComponent, DashboardComponent, SidebarComponent, GridRowComponent, GridItemComponent, GridComponent
+        ShowMessageComponent, DashboardComponent, SidebarComponent
     ],
     imports: [
         DynamicFormModule,
