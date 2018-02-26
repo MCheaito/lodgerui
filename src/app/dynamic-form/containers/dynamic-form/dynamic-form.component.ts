@@ -20,15 +20,12 @@ import { FieldConfig } from '../../models/field-config.interface';
   class="dynamic-form"
   [formGroup]="form"
   (submit)="handleSubmit($event)">
-    <mat-grid-list cols='2'>
     <div    *ngFor="let field of config;" class="col-md-12">
           <ng-container
             dynamicField
             [config]="field"
             [group]="form"> </ng-container>
       </div>
-
-    </mat-grid-list>
     </form>
   `
 })

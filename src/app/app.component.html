@@ -1,4 +1,4 @@
- <div class="app-container" [class.app-is-mobile]="mobileQuery.matches">
+<!-- <div class="app-container" [class.app-is-mobile]="mobileQuery.matches">
     <mat-toolbar color="primary" class="app-toolbar">
         <button mat-icon-button (click)="snav.toggle()">
             <mat-icon>menu</mat-icon>
@@ -7,41 +7,39 @@
     </mat-toolbar>
     <mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
         <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" opened="true">
-            <mat-nav-list>
-                <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
-                <app-sidebar></app-sidebar>
+            <mat-nav-list> -->
+<!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
+<!--                <app-sidebar></app-sidebar>
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>
             <router-outlet></router-outlet>
         </mat-sidenav-content>
     </mat-sidenav-container>
-</div> 
-
-
-
-<!-- <div class="container-fluid">
-    <header><app-nav></app-nav></header>
+</div>  -->
+<div class="container-fluid">
+    <header>
+        <app-nav></app-nav>
+    </header>
     <div class="container">
-        <div class="row">       
+        <div class="row">
             <div class="row-height">
                 <aside class="col-sm-2 col-height">
-                    <app-sidebar></app-sidebar> 
+                    <app-sidebar></app-sidebar>
                 </aside>
                 <section class="col-sm-10 col-height">
                     <article style="padding: 20px;">
                         <router-outlet></router-outlet>
                     </article>
                     <article>
-                            <app-dialog 
-                                [(visible)]="showMessageSvc.visible" 
-                                [title]="showMessageSvc.title"
-                                [message] ="showMessageSvc.message"> 
-                            </app-dialog>
+                        <!-- <app-dialog [(visible)]="showMessageSvc.visible" [title]="showMessageSvc.title" [message]="showMessageSvc.message">
+                        </app-dialog> -->
                     </article>
                 </section>
             </div>
         </div>
     </div>
-<footer class="container-fluid"><h1>FOOTER</h1></footer>
-</div> -->
+    <footer class="container-fluid">
+        <h1>FOOTER</h1>
+    </footer>
+</div>

@@ -1,0 +1,22 @@
+<div class="panel  panel-default col-md-6">
+    <div class="panel panel-heading">
+        <i class="fa fa-tasks pull-left" aria-hidden="true"></i>
+        <label>List of Tasks To do</label>
+        <span class="badge pull-right">12</span>
+    </div>
+     <div class="panel panel-default" *ngFor="let todo of (todos$ | async)">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+      <a data-toggle="collapse" href="#collapse1">{{todo?.id}}</a>
+      <a data-toggle="collapse" href="#collapse1">{{todo?.description}}</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body" >
+        <todo-item [todo]="todo" (onChanged)="onItemChanged($event)" [mode]= "VIEW_MODE"></todo-item>
+      </div>
+      <div class="panel-footer">Panel Footer</div>
+    </div>
+  </div>
+  </div>
+  

@@ -8,29 +8,22 @@ import { Todo } from '../../models/todo.model';
 
 @Component({
   selector: 'todos',
-  //styleUrls: ['products.component.scss'],
-  template: `
-  <div class="panel  panel-default col-md-6">
-  <div class="panel panel-heading">
-      <i class="fa fa-tasks pull-left" aria-hidden="true"></i>
-      <label>List of Tasks To do</label>
-      <span class="badge pull-right">12</span>
-  </div>
-  <mat-accordion>
-      <mat-expansion-panel *ngFor="let todo of (todos$ | async)">
-          <mat-expansion-panel-header>
-              <mat-panel-title>
-                  <span class="badge"> {{todo?.id}}</span>
-              </mat-panel-title>
-              <mat-panel-description>
-                  {{todo?.description}}
-              </mat-panel-description>
-          </mat-expansion-panel-header>
-          <todo-item [todo]="todo" (onChanged)="onItemChanged($event)" [mode]= "VIEW_MODE"></todo-item>
-      </mat-expansion-panel>
-  </mat-accordion>
-</div>
-      `
+//   styleUrls: ['todos.component.scss'],
+templateUrl: 'todos.component.html',
+
+//       <mat-accordion>
+//       <mat-expansion-panel *ngFor="let todo of (todos$ | async)">
+//           <mat-expansion-panel-header>
+//               <mat-panel-title>
+//                   <span class="badge"> {{todo?.id}}</span>
+//               </mat-panel-title>
+//               <mat-panel-description>
+//                   {{todo?.description}}
+//               </mat-panel-description>
+//           </mat-expansion-panel-header>
+//       </mat-expansion-panel>
+//   </mat-accordion>
+
 })
 export class TodosComponent implements OnInit {
   todos$: Observable<Todo[]>;
@@ -45,7 +38,7 @@ export class TodosComponent implements OnInit {
   }
 
   onItemChanged(e: Todo) {
-    console.log("dispatch event ", e)
+    console.log('dispatch event ', e)
     this.store.dispatch(new fromStore.UpdateTodo(e));
   }
 }
