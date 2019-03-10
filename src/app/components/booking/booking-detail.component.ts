@@ -1,5 +1,6 @@
-import { Component, OnInit, AfterViewChecked, ViewChild , Input, Output, OnChanges, EventEmitter, 
-          trigger, state, style, animate, transition} from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild , Input, Output, OnChanges, EventEmitter} from '@angular/core';
+
+  import {trigger,style,animate,transition} from '@angular/animations';
 import {NgForm} from '@angular/forms';
 //todo ajouter les validators
 import { Router, ActivatedRoute, Params } from '@angular/router';

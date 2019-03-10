@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
@@ -10,7 +10,7 @@ import {config} from '../config'
 export class AuthenticationService {
 public token: string;
 
-constructor(  private http :Http ) {
+constructor(  private http :HttpClient ) {
 
   // set token if saved in local storage
   var currentUser = JSON.parse(localStorage.getItem(config.authTokenName));
@@ -30,7 +30,7 @@ constructor(  private http :Http ) {
   
   login(username: string, password: string): Observable<boolean> {
 //      return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
-    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
     const urlSearchParams = new URLSearchParams();
     urlSearchParams.append('username', username);
@@ -40,8 +40,9 @@ constructor(  private http :Http ) {
 //      return this.http.post(config.apiUrl+'authentication/login', JSON.stringify({ username: username, password: password }))
       // return this.http.post(config.url+'authentication/login', body, { headers: headers })
       // return this.http.post(config.urlProd+'token/login.php', body, { headers: headers })
+
       return this.http.post(config.urlProd+'token/login.php', JSON.stringify({ username: username, password: password }))
-             .map((response: Response) => {
+             .map((response: any) => {
               // login successful if there's a jwt token in the response
               let token = response.json() ; //&& response.json().token;
               if (token) {

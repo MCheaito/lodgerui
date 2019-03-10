@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import {options} from '../_models/index';
 
@@ -9,7 +9,7 @@ export class AppConfigService{
     private config:options;
     private env:Object = null;
 
-    constructor(private http: Http) {
+    constructor(private http: HttpClient) {
        
     }
 
@@ -30,54 +30,54 @@ export class AppConfigService{
      *   b) Loads "config.[env].json" to get all env's variables (e.g.: 'config.development.json')
      */
     public load(){
-        return new Promise((resolve, reject) => {
-            this.http.get(this.apiJsonUrl+'env.json').map( res => res.json() )
-                    .catch((error: any):any =>
-                     {
-                        console.log('Configuration file "env.json" could not be read');
-                        resolve(true);
-                        return Observable.throw(error.json().error || 'Server error');
-                    })
-                    .subscribe( (envResponse) => 
-                    {
-                        this.env = envResponse;
+        // return new Promise((resolve, reject) => {
+        //     this.http.get(this.apiJsonUrl+'env.json')
+        //             .catch((error: any):any =>
+        //              {
+        //                 console.log('Configuration file "env.json" could not be read');
+        //                 resolve(true);
+        //                 return Observable.throw(error.json().error || 'Server error');
+        //             })
+        //             .subscribe( (envResponse) => 
+        //             {
+        //                 this.env = envResponse;
 
-                        let request:any = null;
+        //                 let request:any = null;
 
-                        switch (envResponse.env) {
-                            case 'production': {
-                                request = this.http.get(this.apiJsonUrl+'config.' + envResponse.env + '.json');
-                            } break;
+        //                 switch (envResponse.env) {
+        //                     case 'production': {
+        //                         request = this.http.get(this.apiJsonUrl+'config.' + envResponse.env + '.json');
+        //                     } break;
 
-                            case 'development': {
-                                request = this.http.get(this.apiJsonUrl+'config.' + envResponse.env + '.json');
-                            } break;
+        //                     case 'development': {
+        //                         request = this.http.get(this.apiJsonUrl+'config.' + envResponse.env + '.json');
+        //                     } break;
 
-                            case 'default': {
-                                console.error('Environment file is not set or invalid');
-                                resolve(true);
-                            } break;
-                        }
+        //                     case 'default': {
+        //                         console.error('Environment file is not set or invalid');
+        //                         resolve(true);
+        //                     } break;
+        //                 }
 
-                if (request) {
-                    request
-                        .map( res => res.json() )
-                        .catch((error: any) => {
-                            console.error('Error reading ' + envResponse.env + ' configuration file');
-                            resolve(error);
-                            return Observable.throw(error.json().error || 'Server error');
-                        })
-                        .subscribe((responseData) => {
-                            this.config =responseData as options;
+        //         if (request) {
+        //             request
+        //                 .map( res => res.json() )
+        //                 .catch((error: any) => {
+        //                     console.error('Error reading ' + envResponse.env + ' configuration file');
+        //                     resolve(error);
+        //                     return Observable.throw(error.json().error || 'Server error');
+        //                 })
+        //                 .subscribe((responseData) => {
+        //                     this.config =responseData as options;
 
-                            resolve(true);
-                        });
-                } else {
-                    console.error('Env config file "env.json" is not valid');
-                    resolve(true);
-                }
-            });
+        //                     resolve(true);
+        //                 });
+        //         } else {
+        //             console.error('Env config file "env.json" is not valid');
+        //             resolve(true);
+        //         }
+        //     });
 
-        });
+        // });
     }
 }

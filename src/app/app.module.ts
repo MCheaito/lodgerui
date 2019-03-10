@@ -3,7 +3,7 @@ import { GridModule } from './grid/grid.module'
 import { ChartsModule } from 'ng2-charts';
 // import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule, Http, RequestOptions, XHRBackend } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -80,7 +80,7 @@ export const ROUTES: Routes = [
         BrowserModule,
         FormsModule,
         ChartsModule,
-        HttpModule,
+        HttpClientModule,
         BookingModule,
         ReactiveFormsModule ,
         BrowserAnimationsModule,
